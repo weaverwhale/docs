@@ -1,8 +1,8 @@
 ---
-layout: "../../layouts/BlogPost.astro"
-title: "START HERE"
+layout: "../../layouts/DocsPost.astro"
+title: "Introduction"
 description: "Lorem ipsum dolor sit amet"
-pubDate: "Jan 1 2022"
+pubDate: "Dec 12 2022"
 ---
 
 The following list should be installed on your computer:

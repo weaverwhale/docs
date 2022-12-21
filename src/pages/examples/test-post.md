@@ -1,5 +1,5 @@
 ---
-layout: "../../layouts/BlogPost.astro"
+layout: "../../layouts/DocsPost.astro"
 title: "Test post"
 description: "Lorem ipsum dolor sit amet"
 pubDate: "Dec 08 2022"

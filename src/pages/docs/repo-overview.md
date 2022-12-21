@@ -1,8 +1,8 @@
 ---
-layout: "../../layouts/BlogPost.astro"
+layout: "../../layouts/DocsPost.astro"
 title: "Repo Overview"
 description: "Lorem ipsum dolor sit amet"
-pubDate: "Dec 20 2022"
+pubDate: "Dec 15 2022"
 ---
 
 # TW Repo Overview

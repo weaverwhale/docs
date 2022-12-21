@@ -13,9 +13,21 @@ export interface Props {
 	};
 }
 
-const {
-	content: { title, description, pubDate, updatedDate, heroImage },
-} = Astro.props;
+const { content: { title, description, pubDate, updatedDate, heroImage }} = Astro.props;
+
+const docs = (await Astro.glob('../pages/docs/*.{md,mdx}')).sort(
+	(a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
+);
+
+let nextDoc = false
+let endOfDocs = false
+docs.forEach((post, i) => { 
+	if(post.frontmatter.title === title) {
+		nextDoc = docs[i - 1] || docs[docs.length - 1]
+
+		if(!docs[i - 1]) endOfDocs = true
+	}
+})
 ---
 
 <html lang="en">
@@ -51,6 +63,13 @@ const {
 				<slot />
 			</article>
 		</main>
+
+		<hr>
+		
+		{nextDoc ? (
+			<a href={nextDoc.url}>{endOfDocs ? 'Back to beginning:' : 'Next Doc:'} {nextDoc.frontmatter.title}</a>
+		) : ''}
+
 		<Footer />
 	</body>
 </html>
