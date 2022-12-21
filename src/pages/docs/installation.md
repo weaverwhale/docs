@@ -1,11 +1,12 @@
 ---
 layout: "../../layouts/DocsPost.astro"
-title: "Introduction"
-description: "Lorem ipsum dolor sit amet"
-pubDate: "Dec 12 2022"
+title: "Installation"
+description: "Start here and follow directions for full setup instructions"
+pubDate: "Dec 13 2022"
 ---
 
 The following list should be installed on your computer:
+
 ## 1. Install xcode 
 ```
 xcode-select --install
@@ -150,7 +151,9 @@ functions:
 SOMEPATH/triplewhale/backend/functions - npm start debug
  
 For more information, look at the readme: https://github.com/Triple-Whale/backend-packages/tree/master/cli#readme 
-TW APPS URLs
+
+## TW APPS URLs
+
 staging:
 https://triple-whale-staging.web.app/
 https://staging.admin.triplewhale.com/
@@ -167,74 +170,3 @@ Do for both staging and prod: Go to first link and do the signup flow (pls signu
 Once both are done, ask Chezi Hoyzer (by slack) to add you as admin - send him the email address that you used to sign up
 For both staging and prod: After you are admin go to the second link (admin) and add yourself to a shop - madisonbraids
 Go again to the first link - refresh the page and you are in! 
-
-
- 
-Slack Channels – add user to the Dev group
-Connect to the channels:
- 
-#Apps
-#Bugs
-#Cloud-alerts
-#Cloud-build
-#Dev
-#Dev-random
-#Dev-team
-#Devops
-#general
-#Israel-office (for Israel employees)
-#platform-stream - private for platform team
-#Platform-stream-dev - private for platform team
-#customer-success
-#staging-channels
-#releases
-#app-status
- 
-Overall intro: 
-https://www.notion.so/triplewhale/New-Hires-Introducing-Triple-Whale-8b6533351a724499b0b088a516ea9cbe
- 
-Videos
-English:
- 
-On boarding first video - code overview (by Chezi Hoyzer) 53min
-https://drive.google.com/file/d/1VJNlxxCOXaWmZtPQ8lIWRaVQeelwUe_t/view?usp=share_link 
-CI-CD (by Chezi Hoyzer) 10min
-https://drive.google.com/file/d/16GQ51O0vii_18tW4e459HNIqRMW9jcNO/view?usp=share_link
- 
-Running locally (by Chezi Hoyzer) 30min
-https://drive.google.com/file/d/14_4sbb1yNOPy1NT0e-s1nzOIgNxnjRJh/view?usp=share_link
- 
-Data flow of 3rd party APIs into Triple Whale DB (by Chezi Hoyzer): 55min
-https://drive.google.com/file/d/15gXwkMWS7XeJj94Ir__QpSwhVs3a7gDH/view?usp=sharing
- 
-Triple whale stats (by Chezi Hoyzer):40min 
-https://drive.google.com/file/d/1sD1CzMq5zf_v-QDh1wcDhBQwTl3NmdSS/view?usp=sharing
- 
-Hebrew:
- 
-App introduction (Hebrew):
-https://drive.google.com/file/d/1qzeJb6f86yZhZc7Kyhpsaprh2LZZNKUg/view 
- 
-backend introduction (Hebrew):
-https://drive.google.com/file/d/1g3NJk7fiF9kuS-FtwkLVGLyFNGzkOBiQ/view 
-https://drive.google.com/file/d/10W3v05nBrLGRmK6hO5mNkpO6TUea2Zdj/view 
- 
-Import service data flow (Hebrew):
-https://drive.google.com/file/d/1KrRxiPTiLDRCgnhJjPF_Ti4yzNZvgyPj/view 
-Import service data flow diagram - https://excalidraw.com/#room=bdc41cc99c0bc5714472,d2il0aEAseo82LzKKzhUUw 
- 
-Redux (Hebrew): 
-https://drive.google.com/file/d/1tVlSHb3Oxr3Nj34QFBLgPR_q_PzFRGjr/view?usp=share_link
- 
-Unit Tests (Hebrew):
-https://drive.google.com/file/d/1TOoadeHxvojTGqgbKRVviHY0HbwjlINt/view?usp=share_link
- 
-Data Health (Hebrew): 
-https://drive.google.com/file/d/1ABXOh_miUqB67dy_STkgAea9CTCjIW8q/view?usp=share_link
- 
- 
-eCom Crash course by Rabah (CMO): 
-https://drive.google.com/file/d/1IK81K8N5LbNUQRIKFO1hub9Cffu23GpE/view
- 
-Another document that can help Downloads and Installations
- 

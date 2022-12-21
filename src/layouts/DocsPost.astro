@@ -19,7 +19,7 @@ const docs = (await Astro.glob('../pages/docs/*.{md,mdx}')).sort(
 	(a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
 );
 
-let nextDoc = false
+let nextDoc: any = false
 let endOfDocs = false
 docs.forEach((post, i) => { 
 	if(post.frontmatter.title === title) {
@@ -64,6 +64,9 @@ docs.forEach((post, i) => {
 			</article>
 		</main>
 
+		<br>
+		<br>
+		
 		<hr>
 		
 		{nextDoc ? (

@@ -1,7 +1,7 @@
 ---
 layout: "../../layouts/DocsPost.astro"
 title: "CI/CD"
-description: "Lorem ipsum dolor sit amet"
+description: "Continuous Integration / Continuous Deployment"
 pubDate: "Dec 20 2022"
 ---
 

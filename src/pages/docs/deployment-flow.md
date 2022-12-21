@@ -1,17 +1,17 @@
 ---
 layout: "../../layouts/DocsPost.astro"
 title: "Deployment Flow"
-description: "Lorem ipsum dolor sit amet"
+description: "The general flow for deployments"
 pubDate: "Dec 19 2022"
 ---
 
 ## General Flow:
 
-- Do work
-- Test Locally
-- Create PR
-- Test on staging (with test links)
-- ONLY THEN add reviewer and send in slack
+1. Do work
+1. Test Locally
+1. Create PR
+1. Test on staging (with test links)
+1. ONLY THEN add reviewer and send in slack
 
 
 ## Let's do the process:

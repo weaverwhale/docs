@@ -1,52 +1,68 @@
 ---
 layout: "../../layouts/DocsPost.astro"
 title: "Site Overview"
-description: "Lorem ipsum dolor sit amet"
-pubDate: "Dec 13 2022"
+description: "High level overview of the Triple Whale application"
+pubDate: "Dec 11 2022"
 ---
 
-TW Site Overview
+## What is Triple Whale?
 
-Data collection app for Shopify
+Simply put, a data collection app for Shopify stores combining third and first party data for a holisitc view at your customer journey.
 
-Collect data from “services” (Third Party)
+
+## Triple Whale Products
+
+
+### Summary
+- High level explanation about system
+
+### Pixel
+
+#### Third Party services we collect data from:
 - FB Ads
 - Google
 - etc.
 
-Also collect data via Pixel (First party)
-- Compare from third party to our data
+#### First Party Services we collect data from:
+- Triple Pixel (ours)
 
-Third party apps are blocked from collecting heuristics 
+We then compare third party data to our data
 
-Whereas with pixel we know exactly what the custom journey is, cross platform
+#### Why both?
 
-Creative cockpit is layer above ads to give heuristic data
+Third party apps are blocked from collecting heuristics, whereas with our pixel we know exactly what the custom journey is, *cross platform*
 
-Finhub connects statistics for financial forecasting
+### Creative Cockpit
 
-Insights are data above Shopify	
+Alayer above ads to give heuristic data
+
+### Finhub 
+
+Connects statistics for financial forecasting
+
+### Insights
+
+Data placed above/over Shopify	
 - A lot of logic for orders
 - Not connected to ads channel
 
-Tools
-- Reports etc
+### Tools
 
-Connections
+Various tools used for reports, how data is collected, etc.
+
+### Connections
 - Help integrate with all ads channels
-- “We might be working on”
 
-Summary
-- High level explanation about system
 
-Settings pages
+### Settings pages
 - User management
 - Pods view are for agencies running multiple stores that want to see all stores at a high level
     - Also authorizes data pulling from Shopify (Everything begins from Shopify)
 
-ADMIN.triplewhale
+### admin.triplewhale.com
 - Dev UI
 - “Can do a lot of stuff you can’t do from UI”
 - Full Stripe control within here
-
+- Full account control
+- Used mainly by CS folks
 

@@ -1,18 +1,38 @@
 ---
 layout: "../../layouts/DocsPost.astro"
 title: "Quick Hitters"
+description: "Easy-access to most commonly used commands and workflows"
 pubDate: "Dec 21 2022"
 ---
 
+<br>
 
 ## BACKEND
 
-### DEV
+---
 
-#### Bring backend server up
+### DEVELOPMENT
+
+#### Ensure Submodules are up to date
+```bash
+git pull origin master
+git merge master # may need to commit here
+git submodule update --recursive --remote
+```
+
+#### Bring backend services up
 
 ```
+cd {SOMEPATH}/triplewhale/backend
 tw up
+```
+
+Select desired services from dropdown 
+
+#### Bring specific service up
+
+```
+tw up <SERVICE>
 ```
 
 #### Testing with Prod DB:
@@ -23,23 +43,43 @@ tw up --project=shofifi
 
 ### STAGING
 
-1. Ensure you are checked out on your dev branch
-2. `tw deploy internal` (internal = microservice)
-    * Select `staging`
-3. TEST THOROUGHLY
+Ensure you are checked out on your dev branch
+```
+tw deploy <SERVICE>
+``` 
+
+Select *only* `staging`
+
+TEST THOROUGHLY
 
 ### DEPLOY TO PRODUCTION
 
-1. Merge code
-2. Checkout master
-3. tw deploy MICROSERVICE
-* Select shofifi & staging
+Merge code into master within Github, then checkout master locally
 
-—
+```
+git checkout master
+```
+
+Now deploy!
+
+```
+tw deploy <SERVICE>
+```
+
+Select `shofifi` & `staging`
+
+**NOTE**: You will know this is finished when the `api-gateway` GCP service has successfully deployed, and are notified in the `staging-channels` slack channel with three rocket ships
+
+🚀🚀🚀
+
+<br>
+<br>
 
 ## ADMIN
 
-### DEV
+---
+
+### DEVELOPMENT
 
 ```
 cd {SOMEPATH}/triplewhale/admin
@@ -52,29 +92,34 @@ npm start
 2. npm run deploy:channel (Channel = Microservice)
 3. TEST
 
-### DEPLOY
+### DEPLOY TO PRODUCTION
 
-Automatically will deploy after merge to production
+Automatically will deploy after merge to production via a GitHub Action
 
-—
+**NOTE**: You will be notified in the `staging-channels-admin` slack channel with three rocket ships
+
+🚀🚀🚀
+
+<br>
+<br>
+
 
 ## CLIENT
 
-### DEV
+---
+
+### DEVELOPMENT
 ```
 cd {SOMEPATH}/triplewhale/client
 npm start
 ```
 
-## STAGING
+### STAGING
 
 Automatically will deploy after creating a pull request
 
+### DEPLOY TO PRODUCTION
 
-## DEPLOY
+Automatically will deploy after merge to production via a GitHub Action
 
-Automatically will deploy after merge to production
-
-
-
-
+**NOTE**: only merge after the `api-gateway` GCP service has been deployed

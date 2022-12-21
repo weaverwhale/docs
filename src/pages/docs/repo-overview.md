@@ -1,20 +1,20 @@
 ---
 layout: "../../layouts/DocsPost.astro"
-title: "Repo Overview"
-description: "Lorem ipsum dolor sit amet"
-pubDate: "Dec 15 2022"
+title: "Repositories"
+description: "High level understanding of how repositories are structured"
+pubDate: "Dec 12 2022"
 ---
 
-# TW Repo Overview
-
-“Most important packages”
+## “Most important repos"
 - BACKEND
 - CLIENT
 - ADMIN
 
-A lot of shared code between “helper” packages, and many repo’s are shared
+A lot of shared code between various “helper” `@tw`-prefixed packages
 
-BACKEND
+<br>
+
+### BACKEND
 
 History:
 - GCP and Firestore Database
@@ -56,8 +56,9 @@ API service:
 - OpenAPI
 - openapi.yml configuration
 
+<br>
 
-CLIENT
+### CLIENT
 
 Hosted on firebase
 - firebase.yml configures that setup
@@ -67,7 +68,9 @@ Using React & Redux
 Internal packages used as well
 - Currently used but want to change it
 
-ADMIN
+<br>
+
+### ADMIN
 
 “API” cloud function used for oAuth2 flow authentication
 - Express application
@@ -93,7 +96,9 @@ Google BigTable is used for ad channel data, and are still considering other opt
 
 Probably moving everything to mongoDB
 
-PIXEL
+<br>
+
+### PIXEL
 
 triplepx.txt is the pixel
 - Tracks “metrics” based on user activity
