@@ -1,7 +1,7 @@
 ---
 layout: "../../layouts/DocsPost.astro"
 title: "Installation"
-description: "Start here and follow directions for full setup instructions"
+description: "Follow these directions for full setup instructions on a fresh machine"
 pubDate: "Dec 13 2022"
 ---
 

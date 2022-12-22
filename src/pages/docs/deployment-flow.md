@@ -1,7 +1,7 @@
 ---
 layout: "../../layouts/DocsPost.astro"
 title: "Deployment Flow"
-description: "The general flow for deployments"
+description: "The general flow for deployments, as described by Chezi"
 pubDate: "Dec 19 2022"
 ---
 

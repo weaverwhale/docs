@@ -1,7 +1,7 @@
 ---
 layout: "../../layouts/DocsPost.astro"
 title: "Repositories"
-description: "High level understanding of how repositories are structured"
+description: "A high level overview of how repositories are structured"
 pubDate: "Dec 12 2022"
 ---
 

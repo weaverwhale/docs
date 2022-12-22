@@ -1,7 +1,7 @@
 ---
 layout: "../../layouts/DocsPost.astro"
 title: "Site Overview"
-description: "High level overview of the Triple Whale application"
+description: "A high level overview of the Triple Whale application"
 pubDate: "Dec 11 2022"
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: "../layouts/DocsPost.astro"
 title: "Developer Onboarding"
-description: "Microsite for new developer onboarding"
+description: "A microsite for onboarding new US developers"
 heroImage: '/triplewhale-logo-light.svg'
 ---
 

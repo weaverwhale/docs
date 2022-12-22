@@ -1,7 +1,7 @@
 ---
 layout: "../../layouts/DocsPost.astro"
 title: "Slack Channels"
-description: "Channels you should be a part of"
+description: "Channels you should be a part of as a developer"
 pubDate: "Dec 14 2022"
 ---
  
