@@ -7,7 +7,7 @@ pubDate: "Dec 11 2022"
 
 ## What is Triple Whale?
 
-Simply put, a data collection app for Shopify stores combining third and first party data for a holisitc view at a customer's journey.
+Simply put, a data collection app for Shopify stores. Triple Whale combines third and first party data for a holisitc view at a customer's journey.
 
 ## Triple Whale Products
 
