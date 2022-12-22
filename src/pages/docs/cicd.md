@@ -13,7 +13,7 @@ pubDate: "Dec 20 2022"
 - Generate test URL for testing
 - Posted in the `staging-channels` slack
 
-#### When PR is merged, you will see 🚀🚀🚀🚀 in slack!
+#### When PR is merged, you will see 🚀🚀🚀 in slack!
 
 
 ## For CLIENT Repo
@@ -35,7 +35,7 @@ NOTE: This will push whatever you have on your local computer, not your branch w
 
 ### Deploying to production is NOT automatic
 
-Need to go to master branch, run tw deploy internal
+Need to go to master branch, run `tw deploy internal`
 - Will ask which projects you want to deploy
 - You can deploy to production, or staging
 - On master branch, it will ask where you want to deploy, on branch it will push to staging
