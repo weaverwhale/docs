@@ -1,7 +1,7 @@
 ---
 layout: "../layouts/DocsPost.astro"
 title: "New Developer Onboarding"
-description: "Lorem ipsum dolor sit amet"
+description: "New developer onboarding landing page"
 heroImage: '/triplewhale-logo-light.svg'
 ---
 

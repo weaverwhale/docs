@@ -1,5 +1,5 @@
 <template>
-	<input v-model="search" placeholder="Search posts" />
+	<input v-model="search" placeholder="Search post title, description and content" />
 	<p v-for="post in filteredPosts">
 		<a :href="post.url">{{ post.frontmatter.title }} - {{ post.frontmatter.description }}</a>
 	</p>
@@ -18,9 +18,13 @@ export default {
 	computed: {
 		filteredPosts() {
 			return this.posts.filter((post) => {
-				return Object.keys(post.frontmatter).filter((key) => {
+				let frontmatterHas = Object.keys(post.frontmatter).filter((key) => {
 					return post.frontmatter[key].toLowerCase().includes(this.search.toLowerCase())
 				}).length > 0
+				
+				let contentHas = post.content?.toLowerCase().includes(this.search.toLowerCase())
+
+				return frontmatterHas || contentHas
 			})
 		}
 	}
