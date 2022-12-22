@@ -101,3 +101,10 @@ hr {
 .title:hover a:before {
 	visibility: visible;
 }
+
+/* prefers dark mode */
+@media (prefers-color-scheme: dark) {
+	html {
+		filter: invert(100%);
+	}
+}
