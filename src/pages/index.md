@@ -1,7 +1,7 @@
 ---
 layout: "../layouts/DocsPost.astro"
-title: "New Developer Onboarding"
-description: "New developer onboarding landing page"
+title: "Developer Onboarding"
+description: "Microsite for new developer onboarding"
 heroImage: '/triplewhale-logo-light.svg'
 ---
 
@@ -13,4 +13,4 @@ heroImage: '/triplewhale-logo-light.svg'
 
 This documentation is intended to provide a quick startup guide for new developers, in place of the [older documentation found here](https://docs.google.com/document/d/1FxmH7eIDj0x3-BvxqiavkDCKvpjidL0aLaGz4Ray_dY/edit#).
 
-[Get started &rarr;](/docs)
+[Get started &rarr;](/docs/site-overview)

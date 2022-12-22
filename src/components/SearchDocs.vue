@@ -1,5 +1,11 @@
 <template>
-	<input v-model="search" placeholder="Search post title, description and content" />
+	<label for="search">Search Docs</label>
+	<br />
+	<input name="search" id="search" v-model="search" placeholder="Search title, description and content" />
+	<br />
+	<br />
+	<hr />
+	<br />
 	<p v-for="post in filteredPosts">
 		<a :href="post.url">{{ post.frontmatter.title }} - {{ post.frontmatter.description }}</a>
 	</p>
@@ -32,7 +38,12 @@ export default {
 </script>
 
 <style scoped>
+label {
+	font-size: 0.9em;
+}
+
 input {
 	min-width: 50%;
+	padding: 0.5em;
 }
 </style>

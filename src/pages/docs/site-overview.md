@@ -9,21 +9,22 @@ pubDate: "Dec 11 2022"
 
 Simply put, a data collection app for Shopify stores combining third and first party data for a holisitc view at a customer's journey.
 
-
 ## Triple Whale Products
 
-
 ### Summary
+
 - High level explanation about system
 
 ### Pixel
 
 #### Third Party services we collect data from:
+
 - FB Ads
 - Google
 - etc.
 
-#### First Party Services we collect data from:
+#### First Party services we collect data from:
+
 - Triple Pixel (ours)
 
 We then compare third party data to our data
@@ -42,7 +43,8 @@ Connects statistics for financial forecasting
 
 ### Insights
 
-Data placed above/over Shopify	
+Data placed above/over Shopify
+
 - A lot of logic for orders
 - Not connected to ads channel
 
@@ -51,18 +53,21 @@ Data placed above/over Shopify
 Various tools used for reports, how data is collected, etc.
 
 ### Connections
+
 - Help integrate with all ads channels
 
 
 ### Settings pages
+
 - User management
 - Pods view are for agencies running multiple stores that want to see all stores at a high level
-    - Also authorizes data pulling from Shopify (Everything begins from Shopify)
+- Also authorizes data pulling from Shopify (Everything begins from Shopify)
 
 ### admin.triplewhale.com
-- Dev UI
+
+- Developer/Backend UI
 - “Can do a lot of stuff you can’t do from UI”
-- Full Stripe control within here
+- Full Stripe control
 - Full account control
-- Used mainly by CS folks
+- Used heavily by CS folks
 

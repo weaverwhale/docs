@@ -7,14 +7,16 @@ pubDate: "Dec 21 2022"
 
 <br>
 
-## BACKEND
+## Backend
 
 ---
 
-### DEVELOPMENT
+### Development
 
-#### Ensure Submodules are up to date
+#### Ensure Branch and Submodules are up to date
+
 ```bash
+cd {SOMEPATH}/triplewhale/backend
 git pull origin master
 git merge master # may need to commit here
 git submodule update --recursive --remote
@@ -23,7 +25,6 @@ git submodule update --recursive --remote
 #### Bring backend services up
 
 ```
-cd {SOMEPATH}/triplewhale/backend
 tw up
 ```
 
@@ -35,13 +36,13 @@ Select desired services from dropdown
 tw up <SERVICE>
 ```
 
-#### Testing with Prod DB:
+#### Testing with Prod DB
 
 ```
 tw up --project=shofifi
 ```
 
-### STAGING
+### Staging
 
 Ensure you are checked out on your dev branch
 ```
@@ -52,7 +53,7 @@ Select *only* `staging`
 
 TEST THOROUGHLY
 
-### DEPLOY TO PRODUCTION
+### Deploy to Production
 
 Merge code into master within Github, then checkout master locally
 
@@ -75,24 +76,24 @@ Select `shofifi` & `staging`
 <br>
 <br>
 
-## ADMIN
+## Admin
 
 ---
 
-### DEVELOPMENT
+### Development
 
 ```
 cd {SOMEPATH}/triplewhale/admin
 npm start
 ```
 
-### STAGING
+### Staging
 
 1. Change `firebase.initializer.js` variables `isStaging = true` and `isLocalhost = false`
 2. npm run deploy:channel (Channel = Microservice)
 3. TEST
 
-### DEPLOY TO PRODUCTION
+### Deploy to Production
 
 Automatically will deploy after merge to production via a GitHub Action
 
@@ -104,21 +105,22 @@ Automatically will deploy after merge to production via a GitHub Action
 <br>
 
 
-## CLIENT
+## Client
 
 ---
 
-### DEVELOPMENT
+### Development
+
 ```
 cd {SOMEPATH}/triplewhale/client
 npm start
 ```
 
-### STAGING
+### Staging
 
 Automatically will deploy after creating a pull request
 
-### DEPLOY TO PRODUCTION
+### Deploy to Production
 
 Automatically will deploy after merge to production via a GitHub Action
 
