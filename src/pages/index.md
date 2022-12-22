@@ -6,7 +6,6 @@ heroImage: '/triplewhale-logo-light.svg'
 ---
 
 <style>
-  article img { max-width: 350px; }
   time, .toc { display: none !important }
 </style>
 
