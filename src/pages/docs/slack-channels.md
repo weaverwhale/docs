@@ -6,7 +6,7 @@ pubDate: "Dec 14 2022"
 ---
  
 
-## General Development Slack Channels:
+## General Development Slack Channels
  
 1. `#Apps`
 1. `#Bugs`

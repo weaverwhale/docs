@@ -5,7 +5,7 @@ description: "The general flow for deployments"
 pubDate: "Dec 19 2022"
 ---
 
-## General Flow:
+## General Flow
 
 1. Do work
 1. Test Locally
@@ -14,7 +14,7 @@ pubDate: "Dec 19 2022"
 1. ONLY THEN add reviewer and send in slack
 
 
-## Let's do the process:
+## Chezi: Let's do the process
 
 - make a branch for BE and FE
 - make your changes

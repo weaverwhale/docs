@@ -30,3 +30,9 @@ export default {
 	}
 }
 </script>
+
+<style scoped>
+input {
+	min-width: 50%;
+}
+</style>

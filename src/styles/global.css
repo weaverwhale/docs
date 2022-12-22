@@ -65,3 +65,39 @@ blockquote {
 	margin: 0px;
 	font-style: italic;
 }
+hr {
+	border: 0;
+	height: 1px;
+	background: #bababa;
+}
+
+/* remark */
+.toc {
+	border-bottom: 1px solid #bababa;
+	margin-bottom: 2em;
+}
+
+.title {
+	position: relative;
+}
+.title a {
+	position: absolute;
+	display: block;
+	height: 100%;
+	width: 100%;
+	color: inherit;
+}
+
+.title a:before {
+	position: absolute;
+	right: 100%;
+	display: block;
+	content: '#';
+	margin-right: 0.2em;
+	visibility: hidden;
+	opacity: 0.5;
+}
+
+.title:hover a:before {
+	visibility: visible;
+}
