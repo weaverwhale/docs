@@ -2,14 +2,14 @@
 	<label for="search">Search Docs</label>
 	<br />
 	<input name="search" id="search" v-model="search" placeholder="Search title, description and content" />
-	<br />
+	<p style="margin: 0;"><small v-if="search.length > 0 && filteredPosts.length > 0">{{ filteredPosts.length }} matching {{ postText }}</small>&nbsp;</p>
 	<br />
 	<hr />
 	<br />
 	<p v-for="post in filteredPosts">
 		<a :href="post.url">{{ post.frontmatter.title }} - {{ post.frontmatter.description }}</a>
 	</p>
-	<p v-if="filteredPosts.length <= 0">Sorry, no results</p>
+	<p v-if="filteredPosts.length <= 0">Sorry, no results for "{{ search }}"</p>
 </template>
 
 <script>
@@ -32,6 +32,10 @@ export default {
 
 				return frontmatterHas || contentHas
 			})
+		},
+
+		postText() {
+			return 'post' + (this.filteredPosts.length > 1 ? 's' : '')
 		}
 	}
 }
