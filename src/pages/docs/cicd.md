@@ -1,11 +1,11 @@
 ---
 layout: "../../layouts/DocsPost.astro"
 title: "CI/CD"
-description: "Continuous Integration / Continuous Deployment"
+description: "Continuous Integration / Continuous Deployment Flow"
 pubDate: "Dec 20 2022"
 ---
 
-## Staging-channels
+## Staging Channels
 
 ### When you create PR
 
@@ -40,4 +40,30 @@ Need to go to master branch, run `tw deploy internal`
 - You can deploy to production, or staging
 - On master branch, it will ask where you want to deploy, on branch it will push to staging
 
+<br>
+
+## Deployment Flow
+
+#### The general flow for deployments, as described by Chezi
+
+<hr>
+
+### General Flow
+
+1. Do work
+1. Test Locally
+1. Create PR
+1. Test on staging (with test links)
+1. ONLY THEN add reviewer and send in slack
+
+
+### Chezi: Let's do the process
+
+- make a branch for BE and FE
+- make your changes
+- Test in stg very carefully  (deploy to STG BE and FE)
+- I will approve the BE - deploy it to prod
+- Make client channel point to prod
+- test yourself on prod
+- I'll approve the client, and it will be pushed to prod
 
