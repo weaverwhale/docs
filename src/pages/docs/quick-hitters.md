@@ -1,7 +1,7 @@
 ---
 layout: "../../layouts/DocsPost.astro"
 title: "Quick Hitters"
-description: "Easy-access to most commonly used commands and workflows"
+description: "Easy-access to the most commonly used commands and workflows on the \"big three\" repositories"
 pubDate: "Dec 21 2022"
 ---
 

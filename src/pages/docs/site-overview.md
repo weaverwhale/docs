@@ -35,7 +35,7 @@ Third party apps are blocked from collecting heuristics, whereas with our pixel 
 
 ### Creative Cockpit
 
-Alayer above ads to give heuristic data
+A layer above ads to give heuristic data
 
 ### Finhub 
 

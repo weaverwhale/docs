@@ -2,7 +2,7 @@
 layout: "../../layouts/DocsPost.astro"
 title: "Lead Developer Index"
 description: "A general idea of which lead developers do what, and who to ask for what"
-pubDate: "Dec 16 2022"
+pubDate: "Dec 15 2022"
 ---
 
 ####  A who's who of Triple Whale, according to Chesi
