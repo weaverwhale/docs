@@ -4,29 +4,43 @@ import { SITE_TITLE } from '../config';
 ---
 
 <header>
-	<div>
-		<a href="/">
-			<img src="/triplewhale-logo-light.svg" alt={SITE_TITLE} width="250" height="33" />
-		</a>
+	<div class="header-inner">
+		<div>
+			<a href="/">
+				<img src="/tw-logo.svg" alt={SITE_TITLE} width="150" height="21" />
+			</a>
+		</div>
+		<nav>
+			<HeaderLink href="/">Home</HeaderLink>
+			<HeaderLink href="/docs">Docs</HeaderLink>
+			<HeaderLink href="/search">Search</HeaderLink>
+		</nav>
 	</div>
-	<nav>
-		<HeaderLink href="/">Home</HeaderLink>
-		<HeaderLink href="/docs">Docs</HeaderLink>
-		<HeaderLink href="/search">Search</HeaderLink>
-	</nav>
 </header>
 
 <style>
 	header {
+		margin: 0em 0 2em;
+		background: var(--dark-blue);
+		position: sticky;
+		top: -1px;
+		z-index: 1;
+	}
+
+	.header-inner {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
 		gap: 1.25em;
-		margin: 0em 0 2em;
+		padding: 1em;
 	}
 
 	nav {
 		text-align: right;
+	}
+
+	nav a {
+		color: var(--light-blue);
 	}
 
 	h2 {

@@ -57,7 +57,7 @@ Managed docker containers for each microservice
 - New service = new pulumi
 
 ```bash
-Services/<SERVICE>/infra/index.ts 
+services/<SERVICE>/infra/index.ts 
 ```
 
 - JS “Infrastructure as code”

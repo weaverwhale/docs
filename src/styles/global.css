@@ -2,23 +2,30 @@
 	--font-family: -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
 	--black: #202223;
 	--blue: #1877f2;
+	--dark-blue: #062940;
+	--light-blue: #c0d6ea;
 	--white: #fff;
-	--off-white: #f2f2f2;
+	--off-white: #e7e7e7;
 	--gray: #999;
 	--light-gray: #bababa;
+	--background: #f6f6f7;
 }
 
 body {
 	font-family: var(--font-family);
 	margin: auto;
-	padding: 20px;
-	max-width: 65ch;
 	text-align: left;
-	background-color: var(--white);
+	background-color: var(--background);
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 	line-height: 1.5;
 	color: var(--black);
+}
+
+.header-inner, main, footer, .max-width {
+	padding: 1em;
+	max-width: 65ch;
+	margin: auto;
 }
 
 a {
@@ -68,7 +75,7 @@ pre > code {
 blockquote {
 	border: 1px solid var(--gray);
 	color: var(--black);
-	padding: 2px 0px 2px 20px;
+	padding: 2px 0px 2px 16px;
 	margin: 0px;
 	font-style: italic;
 }
@@ -116,4 +123,13 @@ hr {
 	html {
 		filter: invert(100%);
 	}
+}
+
+/* 
+MAGIC
+scroll-top to account for sticky header
+https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-margin-top
+*/
+html {
+  scroll-padding-top: 4rem;
 }
