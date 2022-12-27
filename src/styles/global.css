@@ -1,7 +1,7 @@
 :root {
 	--font-family: -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
 	--black: #202223;
-	--blue: #3273dc;
+	--blue: #1877f2;
 	--white: #fff;
 	--off-white: #f2f2f2;
 	--gray: #999;
@@ -67,7 +67,7 @@ pre > code {
 
 blockquote {
 	border: 1px solid var(--gray);
-	color: #222;
+	color: var(--black);
 	padding: 2px 0px 2px 20px;
 	margin: 0px;
 	font-style: italic;
@@ -98,11 +98,11 @@ hr {
 }
 
 .title a:before {
-	position: absolute;
-	right: 100%;
-	display: block;
 	content: '#';
+	position: absolute;
+	display: block;
 	margin-right: 0.2em;
+	right: 100%;
 	visibility: hidden;
 	opacity: 0.5;
 }

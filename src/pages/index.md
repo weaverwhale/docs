@@ -1,7 +1,7 @@
 ---
 layout: "../layouts/DocsPost.astro"
 title: "Developer Onboarding"
-description: "A microsite for onboarding new US developers"
+description: "A microsite for onboarding new developers"
 ---
 
 <style>
