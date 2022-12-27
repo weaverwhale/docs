@@ -12,7 +12,9 @@ description: "A microsite for onboarding new developers"
 
 ## 🐳🐳🐳 Welcome!
 
-This documentation is intended to provide a quick startup guide for new developers, in place of the [older documentation found here](https://docs.google.com/document/d/1FxmH7eIDj0x3-BvxqiavkDCKvpjidL0aLaGz4Ray_dY/edit#).
+This documentation is intended to provide a quick startup guide for new developers.
+
+This should be used in place of the [older documentation found here](https://docs.google.com/document/d/1FxmH7eIDj0x3-BvxqiavkDCKvpjidL0aLaGz4Ray_dY/edit#), but feel free to reference both as-needed.
 
 <br>
 
