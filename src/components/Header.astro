@@ -4,9 +4,11 @@ import { SITE_TITLE } from '../config';
 ---
 
 <header>
-	<h2>
-		{SITE_TITLE}
-	</h2>
+	<div>
+		<a href="/">
+			<img src="/triplewhale-logo-light.svg" alt={SITE_TITLE} width="250" height="33" />
+		</a>
+	</div>
 	<nav>
 		<HeaderLink href="/">Home</HeaderLink>
 		<HeaderLink href="/docs">Docs</HeaderLink>
@@ -15,8 +17,16 @@ import { SITE_TITLE } from '../config';
 </header>
 <style>
 	header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
 		margin: 0em 0 2em;
 	}
+
+	nav {
+		text-align: right;
+	}
+
 	h2 {
 		margin: 0.5em 0;
 	}
