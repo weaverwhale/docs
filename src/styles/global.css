@@ -118,7 +118,10 @@ hr {
 	visibility: visible;
 }
 
-/* prefers dark mode */
+/* 
+prefers dark mode
+https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme
+*/
 @media (prefers-color-scheme: dark) {
 	html {
 		filter: invert(100%);
@@ -126,7 +129,6 @@ hr {
 }
 
 /* 
-MAGIC
 scroll-top to account for sticky header
 https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-margin-top
 */
