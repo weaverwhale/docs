@@ -56,7 +56,7 @@ Managed docker containers for each microservice
 - Pulumi manages each cloud function here
 - New service = new pulumi
 
-```
+```bash
 Services/<SERVICE>/infra/index.ts 
 ```
 

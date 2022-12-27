@@ -24,7 +24,7 @@ git submodule update --recursive --remote
 
 #### Bring backend services up
 
-```
+```bash
 tw up
 ```
 
@@ -32,20 +32,20 @@ Select desired services from dropdown
 
 #### Bring specific service up
 
-```
+```bash
 tw up <SERVICE>
 ```
 
 #### Testing with Prod DB
 
-```
+```bash
 tw up --project=shofifi
 ```
 
 ### Staging
 
 Ensure you are checked out on your dev branch
-```
+```bash
 tw deploy <SERVICE>
 ``` 
 
@@ -57,13 +57,13 @@ TEST THOROUGHLY
 
 Merge code into master within Github, then checkout master locally
 
-```
+```bash
 git checkout master
 ```
 
 Now deploy!
 
-```
+```bash
 tw deploy <SERVICE>
 ```
 
@@ -82,7 +82,7 @@ Select `shofifi` & `staging`
 
 ### Development
 
-```
+```bash
 cd {SOMEPATH}/triplewhale/admin
 npm start
 ```
@@ -111,7 +111,7 @@ Automatically will deploy after merge to production via a GitHub Action
 
 ### Development
 
-```
+```bash
 cd {SOMEPATH}/triplewhale/client
 nvm use 18
 npx google-artifactregistry-auth -y --repo-config=./.npmrc && npm i -f

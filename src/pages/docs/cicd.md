@@ -18,7 +18,7 @@ pubDate: "Dec 20 2022"
 
 ## For CLIENT Repo
 
-```
+```bash
 deploy:channel:prod package.json command
 ```
 

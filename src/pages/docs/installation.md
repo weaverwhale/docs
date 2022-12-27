@@ -61,13 +61,13 @@ https://www.docker.com/products/docker-desktop/ [ Apple Chip M1 ]
 
 ## Install VS Code 
 
-```
+```bash
 brew install --cask visual-studio-code
 ```
 
 ## Install Firebase tools - CLI (npm package)
 
-```
+```bash
 sudo npm install -g firebase-tools
 firebase login
 ```
@@ -101,7 +101,7 @@ Connecting to the VPN
 
 Install the Google Cloud
 
-```
+```bash
 brew install --cask google-cloud-sdk && gcloud init
 Gcloud init
 ```
@@ -149,7 +149,7 @@ Npm TW registry (https://github.com/Triple-Whale/backend-packages/blob/master/cl
 
 From the triplewhale dir
 
-```
+```bash
 npm config set @tw:registry https://us-central1-npm.pkg.dev/shofifi/npm-packages/
 ```
 
@@ -157,7 +157,7 @@ npm config set @tw:registry https://us-central1-npm.pkg.dev/shofifi/npm-packages
 
 https://cloud.google.com/sdk/docs/install
 
-```
+```bash
 npx google-artifactregistry-auth --yes --repo-config=./services/api/.npmrc
 gcloud auth application-default login
 gcloud config set project triple-whale-staging
@@ -169,7 +169,7 @@ You will then need to run these commands from the backend repo
 
 ## Initialize TW Tool
 
-```
+```bash
 cd </path/to/backend-repo>
 npx google-artifactregistry-auth --yes --repo-config=./services/api/.npmrc
 sudo npm i -g @tw/cli
@@ -177,13 +177,13 @@ sudo npm i -g @tw/cli
  
 ### Register TW tool
 
-```
+```bash
 npx google-artifactregistry-auth --yes --repo-config=./services/api/.npmrc
 ```
 
 TW is command line to manage TripleWhale services locally, execute the following commands:
 
-```
+```bash
 cd triplewhale/backend/packages/cli
 npm install
 npm run build
@@ -194,7 +194,7 @@ sudo npm link
 
 ### Backend
 
-```
+```bash
 for service in services/*;
 echo 'Running npm i for' $service &&  npm i --prefix $service --ignore-scripts; 
 done
@@ -202,7 +202,7 @@ done
 
 Look at the readme in `/packages/cli` if this is not working and follow instructions there.
 
-```
+```bash
 tw services:up --select
 ```
 
@@ -210,21 +210,21 @@ Choose the services (use space): `api, subscription-manager`
  
 ### Admin
 
-```
+```bash
 cd SOMEPATH/triplewhale/admin
 npm start
 ```
 
 ### Client
 
-```
+```bash
 cd SOMEPATH/triplewhale/client
 npm start
 ```
 
 ### Functions (Deprecated)
 
-```
+```bash
 cd SOMEPATH/triplewhale/backend/functions
 npm start debug
 ```
