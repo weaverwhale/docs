@@ -114,7 +114,7 @@ Automatically will deploy after merge to production via a GitHub Action
 ```bash
 cd {SOMEPATH}/triplewhale/client
 nvm use 18
-npx google-artifactregistry-auth -y --repo-config=./.npmrc && npm i -f
+npm run dev:install
 npm start
 ```
 
