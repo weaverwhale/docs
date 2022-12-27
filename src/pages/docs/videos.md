@@ -5,6 +5,10 @@ description: "Useful videos for getting started and understanding the codebase"
 pubDate: "Dec 15 2022"
 ---
 
+<style>
+  time + hr { display: none !important }
+</style>
+
 Overall intro: https://www.notion.so/triplewhale/New-Hires-Introducing-Triple-Whale-8b6533351a724499b0b088a516ea9cbe
  
 <br>
