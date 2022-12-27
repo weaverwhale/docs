@@ -2,6 +2,7 @@
 	--font-family: -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
 	--black: #202223;
 	--blue: #1877f2;
+	--middle-blue: #0D3854;
 	--dark-blue: #062940;
 	--light-blue: #c0d6ea;
 	--white: #fff;
@@ -29,7 +30,7 @@ body {
 }
 
 a {
-	color: var(--blue);
+	color: var(--middle-blue);
 }
 
 nav a {
