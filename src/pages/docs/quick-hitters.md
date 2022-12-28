@@ -13,6 +13,13 @@ pubDate: "Dec 21 2022"
 
 ### Development
 
+```bash
+cd {SOMEPATH}/triplewhale/backend
+nvm use 18
+npm run infra:install #install everything
+npm start
+```
+
 #### Ensure Branch and Submodules are up to date
 
 ```bash
