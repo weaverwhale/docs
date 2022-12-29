@@ -98,6 +98,8 @@ Some more examples are `utils`, `constants`, `types`, but that is not an exhaust
 
 Each sub-package is prefixed with `@tw`, and named according to their folder (eg: `@tw/utils`)
 
+### Locally link
+
 Sometimes we want to update  packages, and in order to do that we have to link packages that normally go to NPM to our local env.
 
 In order to link packages locally, run below within your desired repo:
@@ -107,6 +109,43 @@ tw packages:link
 ```
 
 Then choose the packages and relevant services you would like to link them to
+
+### Push to Staging & Create New Version
+
+```bash
+cd {SOMEPATH}/triplewhale/backend
+git checkout <BRANCH>
+npm run deploy
+```
+
+Once approved and merged, we publish
+
+### Publish these changes to acquire a new version
+
+```bash
+git checkout master
+tw publish types
+tw publish utils
+```
+
+Each will output a new version after building
+
+Get that version, and update it in `package.json`
+
+Then install to get updates
+
+```
+tw auth
+npm install
+```
+
+to test
+
+now deploy service to staging
+
+```
+tw deploy <SERVICE>
+```
 
 <br>
 <br>
