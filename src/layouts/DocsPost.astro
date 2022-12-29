@@ -16,16 +16,22 @@ export interface Props {
 
 const { content: { title, description, pubDate, updatedDate, heroImage }} = Astro.props;
 
-const docs = (await Astro.glob('../pages/docs/*.{md,mdx}')).sort(
-	(a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
-);
+const docs = (
+	await Astro.glob('../pages/docs/*.{md,mdx}'))
+	.sort((a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf());
 
+// NOTE
+// in this case, prev is next and next is prev (historically)
+let prevDoc: any = false
 let nextDoc: any = false
-let endOfDocs = false
+let endOfDocs: boolean = false
+let beginningOfDocs: boolean = false
 docs.forEach((post, i) => { 
 	if(post.frontmatter.title === title) {
-		nextDoc = docs[i - 1] || docs[docs.length - 1]
+		prevDoc = docs[i + 1] || docs[0]
+		if(!docs[i + 1]) beginningOfDocs = true
 
+		nextDoc = docs[i - 1] || docs[docs.length - 1]
 		if(!docs[i - 1]) endOfDocs = true
 	}
 })
@@ -44,13 +50,19 @@ docs.forEach((post, i) => {
 				margin-top: 0;
 			}
 
-			hr {
-				margin: 1rem 0;
+			.pagination {
+				display: grid;
+				grid-template-columns: 1fr 1fr 1fr;
+				padding-top: 0;
+				padding-bottom: 0;
 			}
 
-			.next-doc {
+			.pagination .index {
+				text-align: center;
+			}
+
+			.pagination .next {
 				text-align: right;
-				padding: 0;
 			}
 		</style>
 	</head>
@@ -65,17 +77,24 @@ docs.forEach((post, i) => {
 				{pubDate && <time>{pubDate}</time>}
 				{minutesRead && (<br><time><small>{minutesRead}</small></time>)}
 				{updatedDate && (<div>Last updated on <time>{updatedDate}</time></div>)}
-				<hr />
+				<hr>
 				<slot />
 			</article>
 		</main>
-		<div class="max-width next-doc">
-			{nextDoc ? (
-				<br />
-				<hr />
-				<a href={nextDoc.url}>{endOfDocs ? 'Back to beginning:' : 'Next Up:'} {nextDoc.frontmatter.title} &rarr;</a>
-			) : ''}
-		</div>
+		{prevDoc || nextDoc ? (
+			<div class="max-width">
+				<hr>
+			</div>
+			<div class="max-width pagination">
+				{prevDoc ? (
+					<a href={prevDoc.url}>&larr; Go Back: {prevDoc.frontmatter.title}</a>
+				) : '<div></div>'}
+				<a class="index" href="/docs">Docs Index</a>
+				{nextDoc ? (
+					<a class="next" href={nextDoc.url}>{endOfDocs ? 'Start Over:' : 'Next Up:'} {nextDoc.frontmatter.title} &rarr;</a>
+				) : '<div></div>'}
+			</div>
+		) : ''}
 		<Footer />
 	</body>
 </html>

@@ -55,18 +55,6 @@ tw up <SERVICE>
 tw up --project=shofifi
 ```
 
-#### Updating `@tw` Packages
-
-Sometimes we want to update `@tw` packages, and in order to do that we have to link packages that normally go to NPM to our local env.
-
-In order to link Triple Whale packages locally, run below within your desired repo:
-
-```bash
-tw packages:link
-```
-
-Then choose the packages and relevant services you would like to link them to
-
 ### Staging
 
 Ensure you are checked out on your dev branch
@@ -95,6 +83,30 @@ Select `shofifi` & `staging`
 **NOTE**: You will know this is finished when the `api-gateway` GCP service has successfully deployed, and are notified in the `staging-channels` slack channel with three rocket ships
 
 🚀🚀🚀
+
+<br>
+<br>
+
+
+## Backend Packages
+
+---
+
+The [TW CLI](#tw-cli) is just one of the folders housed under `backend/packages`
+
+Some more examples are `utils`, `constants`, `types`, but that is not an exhaustive list, and it changes all the time
+
+Each sub-package is prefixed with `@tw`, and named according to their folder (eg: `@tw/utils`)
+
+Sometimes we want to update  packages, and in order to do that we have to link packages that normally go to NPM to our local env.
+
+In order to link packages locally, run below within your desired repo:
+
+```bash
+tw packages:link
+```
+
+Then choose the packages and relevant services you would like to link them to
 
 <br>
 <br>
