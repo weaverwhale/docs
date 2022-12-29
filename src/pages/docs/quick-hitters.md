@@ -33,6 +33,8 @@ git submodule update --recursive --remote
 
 After git/npm actions, to run any of the backend services we utilize the Triple Whale CLI
 
+For more information/documentation, [view the README](https://github.com/Triple-Whale/backend-packages/tree/aa6183e3e13e7e6b16328ea915dbe37e31ec15e6/cli)
+
 #### Bring backend services up
 
 ```bash
