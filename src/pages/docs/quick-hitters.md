@@ -16,7 +16,7 @@ pubDate: "Dec 21 2022"
 ```bash
 cd {SOMEPATH}/triplewhale/backend
 nvm use 18
-npm run infra:install #install everything
+npm run infra:install # install everything
 npm start
 ```
 
@@ -28,6 +28,10 @@ git pull origin master
 git merge master # may need to commit here
 git submodule update --recursive --remote
 ```
+
+### TW CLI
+
+After git/npm actions, to run any of the backend services we utilize the Triple Whale CLI
 
 #### Bring backend services up
 
@@ -49,6 +53,18 @@ tw up <SERVICE>
 tw up --project=shofifi
 ```
 
+#### Updating `@tw` Packages
+
+Sometimes we want to update `@tw` packages, and in order to do that we have to link packages that normally go to NPM to our local env.
+
+In order to link Triple Whale packages locally, run below within your desired repo:
+
+```bash
+tw packages:link
+```
+
+Then choose the packages and relevant services you would like to link them to
+
 ### Staging
 
 Ensure you are checked out on your dev branch
@@ -56,9 +72,7 @@ Ensure you are checked out on your dev branch
 tw deploy <SERVICE>
 ``` 
 
-Select *only* `staging`
-
-TEST THOROUGHLY
+Select *only* `staging`, then **TEST THOROUGHLY**
 
 ### Deploy to Production
 
@@ -134,15 +148,3 @@ Automatically will deploy after creating a pull request
 Automatically will deploy after merge to production via a GitHub Action
 
 **NOTE**: only merge after the `api-gateway` GCP service has been deployed
-
-### Updating `@tw` Packages
-
-Sometimes we want to update `@tw` packages, and in order to do that we have to link packages that normally go to NPM to our local env.
-
-In order to link Triple Whale packages locally, run below within your desired repo:
-
-```bash
-tw packages:link
-```
-
-Then choose the packages and relevant services you would like to link them to
