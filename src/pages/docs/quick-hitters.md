@@ -92,23 +92,21 @@ Select `shofifi` & `staging`
 
 ---
 
-The [TW CLI](#tw-cli) is just one of the folders housed under `backend/packages`
+The [TW CLI](#tw-cli) is just one of the internal packages housed under `backend/packages`
 
 Some more examples are `utils`, `constants`, `types`, but that is not an exhaustive list, and it changes all the time
 
 Each sub-package is prefixed with `@tw`, and named according to their folder (eg: `@tw/utils`)
 
-### Locally link
+### Local Package Development
 
-Sometimes we want to update  packages, and in order to do that we have to link packages that normally go to NPM to our local env.
-
-In order to link packages locally, run below within your desired repo:
+Sometimes we will need to update these packages, and in order to do that we have to link them to our local env.
 
 ```bash
 tw packages:link
 ```
 
-Then choose the packages and relevant services you would like to link them to
+Then choose the packages and relevant packages you would like hosted locally, and the services you would like to link them to
 
 ### Push to Staging & Create New Version
 
@@ -118,34 +116,45 @@ git checkout <BRANCH>
 npm run deploy
 ```
 
-Once approved and merged, we publish
+Commit your code, and create a PR; once approved and merged, we can publish it and acquire a new version
 
-### Publish these changes to acquire a new version
+### Publish Changes & Acquire New Version
 
 ```bash
 git checkout master
-tw publish types
-tw publish utils
+git pull origin master
+tw publish <PACKAGE> # eg: tw publish utils
 ```
 
-Each will output a new version after building
+This will provide a GCP console ling, which will output a new version after building
 
 Get that version, and update it in `package.json`
 
+```json
+{
+  "@tw/utils": "^<NEW VERSION>"
+}
+```
+
 Then install to get updates
 
-```
+```bash
 tw auth
 npm install
+npm start # to test
 ```
 
-to test
+Once testing is complete (for instance checking an endpoint via Postman, or testing admin), you can now deploy to staging
 
-now deploy service to staging
+From here, the deployment is the same as the backend deployment for both backend and staging
 
+```bash
+tw deploy <SERVICE> # select staging and/or shofifi
 ```
-tw deploy <SERVICE>
-```
+
+As detailed above, after successful deployment, we should see rocket ships in slack
+
+🚀🚀🚀
 
 <br>
 <br>
