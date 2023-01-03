@@ -1,0 +1,233 @@
+---
+layout: "../../layouts/DocsPost.astro"
+title: "InScreen Integration"
+description: "Integrating a new service - InScreen - into the Triple Whale ecosystem"
+pubDate: "Jan 3 2023"
+---
+
+This will serve as a placeholder for information as I attempt to integrate [InScreen](https://www.inscreen.com/). Hopefully in the future this will serve to help someone else trying to integrate a new service into the ecosystem!
+
+For easy access: [Inscreen Documentation](https://docs.inscreen.com/)
+
+## Definitions
+
+### Tenant
+
+The product which integrates inScreen. Usually an inScreen’s customer.
+
+#### In our case, TripleWhale is the **tenant**
+
+### Team
+
+The group of users who have access to the same product and/or set of pages. Usually the customer’s customer.
+
+#### In our case, a pod is a **team**
+
+### User
+
+The single user who has access to the Tenant’s product. Can belong to 1 or more teams.
+
+#### In our case, an individual user is a **user**
+
+### Anchor
+
+Any visual or logical element on the product in the context of which a discussion thread can be created.
+
+### Locator
+
+A unique identifier for the data the anchor represents. The same locator may be used for multiple anchors that show the same data, for example, if the data can be viewed on multiple screens.
+
+## Backend Integration
+
+### Step 1: Provision teams and users 
+
+inScreen doesn’t require end-users to sign up to inScreen separately. Hence, inScreen’s customers’ applications need to authenticate sessions to inScreen using the same login data as the application itself.
+
+### Step 2: Authenticating a session
+
+This per-page action creates an encrypted token that identifies the current user with inScreen. This allows your system’s users to interact with inScreen without having to authenticate again. The payload is encrypted, not merely signed, so there is no concern if you treat your user IDs as Personal Data. The tokens are created with a short expiry time, so they can be embedded in your site’s HTML (assuming the HTML isn’t cached).
+
+You should use an inScreen-provided library/package for your language to generate these tokens.
+
+```javascript
+import { createInScreenToken } from '@inscreen/sdk-server';
+
+const inScreenToken = createInScreenToken(apiKey, {
+  v: 1,
+  userId: 'TENANT_USER_ID_HERE',
+  teamId: 'TENANT_TEAM_ID_HERE',
+});
+```
+
+### Testing without Server
+
+Generally, inScreen authentication tokens must be created securely on the server side. However, this makes the initial testing with a sandbox account annoying when starting. The code below demonstrates how to create inScreen authentication tokens from the client side using inScreen's servers. This code only works for sandbox accounts and will return an error when used with non-sandbox tenants (HTTP 403 Forbidden).
+
+```javascript
+// _ONLY_ for sandbox accounts, it's OK to use the API key from the client side.
+// _NEVER_ expose a production API key to the client side.
+const apiKey = '.....';
+
+const tenantId = '.....';
+
+const response = fetch('https://us.inscreen.com/api/self-service/auth', {
+  method: 'POST',
+  headers: {
+    'inScreen-Tenant-ID': tenantId,
+    Authorization: `Bearer ${apiKey}`,
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    tenantUserId: 'luke', 
+    tenantTeamId: 'starwars' 
+  }),
+});
+
+const { token } = await response.json();
+
+window.inScreen.initialize({
+  endpoint: 'https://us.inscreen.com/graphql',
+  tenantId: tenantId,
+  token: token,
+});
+```
+
+## Frontend Integration
+
+### Step 3: Initialize the inScreen SDK
+
+Load the inScreen SDK from our CDN. Add these tags to the <head> of the application:
+
+```html
+<link rel="dns-prefetch" href="https://cdn.inscreen.com/" />
+<link rel="dns-prefetch" href="https://us.inscreen.com/" />
+<script src="https://cdn.inscreen.com/web-components/v/0/script.js"></script>
+```
+
+If you loaded it from a CDN, inScreen will be defined on the window object. Use the following snippet to initialize it:
+
+```javascript
+window.inScreen.initialize({
+  endpoint: 'https://us.inscreen.com/graphql',
+  tenantId: 'TENANT_ID', // This value was given to you by inScreen. It is **not** your API key.
+  token: inScreenToken, // This value was generated server-side in an earlier step. It is **not** your API key.
+});
+```
+
+### Step 4: Mark collaborative elements on the page
+
+To enable collaboration on an element, add inside of it a child element like this:
+
+```html
+<div class="element-to-enable-inscreen-on">
+  <!-- other content -->
+  <inscreen-anchor version="A" locator="LOCATOR_STRING_HERE" behavior="floating-controls" />
+</div>
+```
+
+Locator strings are unique identifiers for logical collaborative content. One very simple approach would be to use object IDs, or page URLs, as locator strings for everything. This approach can work, just note that inScreen’s Version A, default variant does not permit having :: inside simple locator strings.
+
+A more interesting structure includes nesting. If a super-entity with ID `123` has sub-entities, `456` and `789`, setting the locator string of them to be `123::456` and `123::789` respectively, allows inScreen to perform aggregations, such as "List all comments on `123` or sub-entities", "Subscribe to all changes in `123` or sub-entities". inScreen supports unbound nesting, as long as the locator string is not longer than 4,096 bytes.
+
+### Step 5: Select the interface behavior
+
+inScreen currently provides two sets of out-of-the-box behaviors: (a) Floating controls; (b) Sidebar drawer, which are described below.
+
+Please note that these elements are highly customizable, and can be controlled by using CSS variables. On top of that, we are constantly adding new sets of behaviors to our library, based customers' requests, to make sure we align with the look and feel of every application.
+
+#### Floating controls
+
+Setting floating controls for an anchor will implement the following behavior:
+
+Hover on any point of the anchor’s area will surface a “new comment button” adjacent to the anchor (location can be customized)
+
+Click on the new comment button will open a “new comment box” near the new comment button (location can be customized)
+
+Submitted threads will be presented constantly adjacent to the anchor (location can be customized)
+
+To enable floating controls for an anchor, simply set `behavior="floating-controls"` and inScreen will do everything else automatically.
+
+Floating controls currently support two styling archetypes: `behavior-style="bubbles"` (default) and `behavior-style="stickies"`. The difference is purely visual.
+
+#### Sidebar drawer
+
+Setting floating controls for an anchor will implement the following behavior:
+
+Hover on any point of the anchor’s area will surface a new comment button adjacent to the anchor (location can be customized)
+
+Alternatively, you can implement a fixed button, within or beside the defined anchor, which will invoke an API call (see inScreen.openDrawer in the Client-Side APIs section )
+
+Clicking on the button will open a drawer. This drawer will contain the new comment box, as well as existing threads
+
+To enable the sidebar drawer, you need to embed `<inscreen-drawer />` in your application’s HTML. Note that the inScreen drawer will be inside the viewport bounding rectangle of its parent element, so deciding where to place the `<inscreen-drawer />` tag can be important if you want it to take top-menubars/sidebars/footers into consideration.
+
+The drawer doesn’t open on its own, except for when loading deep-links from email/IM notifications. To open the drawer, see `inScreen.openDrawer` in the Client-Side APIs section.
+
+Anchors that work with the drawer must have a title defined `title="TEXT HERE"`. It is recommended to have all anchors that should work with the drawer set with `behavior="drawer"`. While functioning mostly the same as `behavior="none"`, anchors that are set with `behavior="drawer"` will have their deep-links (those that are embedded in email/IM notifications) automatically open the drawer.
+
+Like all inScreen standard components, the drawer can be styled and configured with CSS variables.
+
+## Test Integration
+
+Below is some code wrapped in a DCL function, that follows the above documentation in order to integrate on the frontend
+
+<link rel="dns-prefetch" href="https://cdn.inscreen.com/" />
+<link rel="dns-prefetch" href="https://us.inscreen.com/" />
+<script src="https://cdn.inscreen.com/web-components/v/0/script.js"></script>
+
+<style>
+  .element-to-enable-inscreen-on {
+    background: var(--middle-blue);
+    color: var(--white);
+    padding: 0.15rem 1rem;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px rgba(var(--black), 0.5);
+  }
+</style>
+
+<h4 id="token-id"></h4>
+
+<div class="element-to-enable-inscreen-on">
+  <h1 id="inscreen-1">inScreen Anchor - Floating Controls</h1>
+  <inscreen-anchor version="A" locator="inscreen-1" behavior="floating-controls" />
+</div>
+
+<br>
+
+<div class="element-to-enable-inscreen-on">
+  <h1 id="inscreen-2">inScreen Anchor - Stickies</h1>
+  <inscreen-anchor version="A" locator="inscreen-2" behavior="floating-controls" behavior-style="stickies" />
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', async () => {
+    // initialize backend 
+    // using client side sandbox auth for sandbox
+    const apiKey = "QofgwGuuAyfXmgiB4iwiYlESH8JpnVC2pBcZZceb_pY";
+    const tenantId = "6fdeef5c-96a2-4d3f-9f78-c966de28bbbb";
+
+    const response = fetch('https://us.inscreen.com/api/self-service/auth', {
+      method: 'POST',
+      headers: {
+        'inScreen-Tenant-ID': tenantId,
+        Authorization: `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        tenantUserId: 'luke',
+        tenantTeamId: 'starwars'
+      }),
+    }).then(res => res.json());
+
+    const { token } = await response;
+    const tokenInfo = `InScreen Token: ${token}`
+    document.getElementById('token-id').innerHTML = tokenInfo
+
+    // initialize frontend
+    window.inScreen.initialize({
+      endpoint: 'https://us.inscreen.com/graphql',
+      tenantId: tenantId,
+      token: token,
+    });
+  })
+</script>
