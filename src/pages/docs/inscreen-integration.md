@@ -1,11 +1,11 @@
 ---
 layout: "../../layouts/DocsPost.astro"
 title: "InScreen Integration"
-description: "Integrating a new service - InScreen - into the Triple Whale ecosystem"
+description: "Information about InScreen"
 pubDate: "Jan 3 2023"
 ---
 
-This will serve as a placeholder for information as I attempt to integrate [InScreen](https://www.inscreen.com/). Hopefully in the future this will serve to help someone else trying to integrate a new service into the ecosystem!
+This will serve as a placeholder for information as I attempt to integrate [InScreen](https://www.inscreen.com/).
 
 For easy access: [Inscreen Documentation](https://docs.inscreen.com/)
 
@@ -21,7 +21,7 @@ The product which integrates inScreen. Usually an inScreen’s customer.
 
 The group of users who have access to the same product and/or set of pages. Usually the customer’s customer.
 
-#### In our case, a pod is a **team**
+#### In our case, a store (.myshopify.com) is a **team**
 
 ### User
 
