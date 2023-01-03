@@ -55,7 +55,7 @@ tw up <SERVICE>
 tw up --project=shofifi
 ```
 
-### Staging
+### Deploy to Staging
 
 Ensure you are checked out on your dev branch
 ```bash
@@ -135,9 +135,7 @@ npm start # to test
 
 Once testing is complete (for instance checking an endpoint via Postman, or testing admin), you can now begin publishing
 
-### Publishing
-
-`tw publish` is to packages as `tw deploy` is to backend. We use this to push `@tw` packages to both staging and production
+#### `tw publish` is to packages as `tw deploy` is to backend. We use this to push `@tw` packages to both staging and production
 
 
 ### Publish To Staging
@@ -214,7 +212,7 @@ cd <SOMEPATH>/triplewhale/admin
 npm start
 ```
 
-### Staging
+### Deploy to Staging
 
 1. Change `firebase.initializer.js` variables `isStaging = true` and `isLocalhost = false`
 2. npm run deploy:channel (Channel = Microservice)
@@ -245,7 +243,7 @@ npm run dev:install
 npm start
 ```
 
-### Staging
+### Deploy to Staging
 
 Automatically will deploy after creating a pull request
 
