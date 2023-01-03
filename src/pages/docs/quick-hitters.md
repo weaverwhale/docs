@@ -80,6 +80,10 @@ tw deploy <SERVICE>
 
 Select `shofifi` & `staging`
 
+`shofifi` = production
+
+`staging` = staging
+
 **NOTE**: You will know this is finished when the `api-gateway` GCP service has successfully deployed, and are notified in the `staging-channels` slack channel with three rocket ships
 
 🚀🚀🚀
@@ -101,6 +105,21 @@ Each sub-package is prefixed with `@tw`, and named according to their folder (eg
 ### Local Package Development
 
 Sometimes we will need to update these packages, and in order to do that we have to link them to our local env.
+
+On frontend we can run:
+
+```bash
+# For packages
+cd backend/<PACKAGE>
+npm i
+npm link
+
+#for frontend
+npm link @tw/ <PACKAGE>
+npm start
+```
+
+Or, simply run below to have a much more concise UI/selection experience:
 
 ```bash
 tw packages:link
@@ -127,6 +146,8 @@ tw publish <PACKAGE> # eg: tw publish utils
 ```
 
 This will provide a GCP console ling, which will output a new version after building
+
+When its done you’ll get a notification on `#cloud-build`
 
 Get that version, and update it in `package.json`
 
