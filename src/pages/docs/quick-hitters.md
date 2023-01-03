@@ -14,7 +14,7 @@ pubDate: "Dec 21 2022"
 ### Development
 
 ```bash
-cd {SOMEPATH}/triplewhale/backend
+cd <SOMEPATH>/triplewhale/backend
 nvm use 18
 npm run infra:install # install everything
 npm start
@@ -23,7 +23,7 @@ npm start
 #### Ensure Branch and Submodules are up to date
 
 ```bash
-cd {SOMEPATH}/triplewhale/backend
+cd <SOMEPATH>/triplewhale/backend
 git pull origin master
 git merge master # may need to commit here
 git submodule update --recursive --remote
@@ -100,13 +100,11 @@ The [TW CLI](#tw-cli) is just one of the internal packages housed under `backend
 
 Some more examples are `utils`, `constants`, `types`, but that is not an exhaustive list, and it changes all the time
 
-Each sub-package is prefixed with `@tw`, and named according to their folder (eg: `@tw/utils`)
+Each sub-package is prefixed with `@tw`, and named according to their folder (eg: `@tw/utils`) when used as a dependency
 
 ### Local Package Development
 
-Sometimes we will need to update these packages, and in order to do that we have to link them to our local env.
-
-On frontend we can run:
+Sometimes we will need to update these packages, and in order to do that we have to link them to our local environment
 
 ```bash
 # For packages
@@ -115,7 +113,7 @@ npm i
 npm link
 
 #for frontend
-npm link @tw/ <PACKAGE>
+npm link @tw/<PACKAGE>
 npm start
 ```
 
@@ -127,37 +125,7 @@ tw packages:link
 
 Then choose the packages and relevant packages you would like hosted locally, and the services you would like to link them to
 
-### Push to Staging & Create New Version
-
-```bash
-cd {SOMEPATH}/triplewhale/backend
-git checkout <BRANCH>
-npm run deploy
-```
-
-Commit your code, and create a PR; once approved and merged, we can publish it and acquire a new version
-
-### Publish Changes & Acquire New Version
-
-```bash
-git checkout master
-git pull origin master
-tw publish <PACKAGE> # eg: tw publish utils
-```
-
-This will provide a GCP console ling, which will output a new version after building
-
-When its done you’ll get a notification on `#cloud-build`
-
-Get that version, and update it in `package.json`
-
-```json
-{
-  "@tw/utils": "^<NEW VERSION>"
-}
-```
-
-Then install to get updates
+To get up and running locally:
 
 ```bash
 tw auth
@@ -165,15 +133,70 @@ npm install
 npm start # to test
 ```
 
-Once testing is complete (for instance checking an endpoint via Postman, or testing admin), you can now deploy to staging
+Once testing is complete (for instance checking an endpoint via Postman, or testing admin), you can now begin publishing
 
-From here, the deployment is the same as the backend deployment for both backend and staging
+### Publishing
+
+`tw publish` is to packages as `tw deploy` is to backend. We use this to push `@tw` packages to both staging and production
+
+
+### Publish To Staging
+
+Ensure you are checked out on your test branch and up to date with master. Test, create a pull request, then publish to staging for additionaly testing:
+
+```bash
+cd <SOMEPATH>/triplewhale/backend
+git checkout <BRANCH>
+tw publish <PACKAGE> # eg: tw publish utils
+```
+
+This will provide a GCP console link, which will output a new *test* version after build.
+
+You can then get that version, update it in `package.json`, and test your staging changes locally
+
+```json
+{
+  "@tw/utils": "^<TEST VERSION>"
+}
+```
+
+Then install to pull your updates into `node_modules`, just as we did previously, and test.
+
+### Publish to Production
+
+Once your PR is merged, checkout master, and publish your changes to acquire a production version
+
+```bash
+git checkout <BRANCH>
+git pull origin master
+tw publish <PACKAGE> # eg: tw publish utils
+```
+
+This will provide a GCP console link, which will output a new version after building
+
+When its done you’ll get a notification on `#cloud-build`
+
+Get that version, and update it in `package.json`
+
+```json
+{
+  "@tw/utils": "^<PRODUCTION VERSION>"
+}
+```
+
+Then install to pull your updates into `node_modules`
+
+From here, the deployment for packages is complete. 
+
+Now we must go through the normal deployment flow for both `backend` and `client`.
+
+For instance, if we were updating a package within backend, we go thorugh the deployment flow, and then run
 
 ```bash
 tw deploy <SERVICE> # select staging and/or shofifi
 ```
 
-As detailed above, after successful deployment, we should see rocket ships in slack
+As detailed above (and below for client), after successful deployment, we should see rocket ships in slack
 
 🚀🚀🚀
 
@@ -187,7 +210,7 @@ As detailed above, after successful deployment, we should see rocket ships in sl
 ### Development
 
 ```bash
-cd {SOMEPATH}/triplewhale/admin
+cd <SOMEPATH>/triplewhale/admin
 npm start
 ```
 
@@ -216,7 +239,7 @@ Automatically will deploy after merge to production via a GitHub Action
 ### Development
 
 ```bash
-cd {SOMEPATH}/triplewhale/client
+cd <SOMEPATH>/triplewhale/client
 nvm use 18
 npm run dev:install
 npm start
