@@ -18,4 +18,4 @@ The onboarding section can be used in place of the [older documentation found he
 
 <br>
 
-[Get started: Site Overview &rarr;](/docs/site-overview)
+[Get started: Site Overview &rarr;](/onboarding/site-overview)
