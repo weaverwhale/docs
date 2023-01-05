@@ -6,9 +6,20 @@
 	<br />
 	<hr />
 	<br />
-	<p v-for="post in filteredPosts">
-		<a :href="post.url">{{ post.frontmatter.title }} - {{ post.frontmatter.description }}</a>
-	</p>
+	<br />
+	<div class="posts">
+		<a v-for="post in filteredPosts" :href="post.url" class="post">
+			<h2>{{ post.frontmatter.title }}</h2>
+			<time datetime={post.frontmatter.pubDate}>
+				{{new Date(post.frontmatter.pubDate).toLocaleDateString('en-us', {
+					year: 'numeric',
+					month: 'short',
+					day: 'numeric',
+				})}}
+			</time>
+			<p>{{ post.frontmatter.description }}</p>
+		</a>
+	</div>
 	<p v-if="filteredPosts.length <= 0">Sorry, no results for "{{ search }}"</p>
 </template>
 

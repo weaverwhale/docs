@@ -2,6 +2,9 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import PrevNext from '../components/PrevNext.astro'
+import ArticleContents from '../components/ArticleContents.astro';
+
 const { minutesRead } = Astro.props.frontmatter;
 
 export interface Props {
@@ -14,7 +17,7 @@ export interface Props {
 	};
 }
 
-const { content: { title, description, pubDate, updatedDate, heroImage }} = Astro.props;
+const { content: { title, description, pubDate, updatedDate, heroImage } } = Astro.props;
 
 const docs = (
 	await Astro.glob('../pages/blog/*.{md,mdx}'))
@@ -39,62 +42,31 @@ docs.forEach((post, i) => {
 
 <html lang="en">
 	<head>
-		<BaseHead title={title} description={description} />
-		<style>
-			.title {
-				font-size: 2em;
-				margin: 0.25em 0 0;
-			}
-
-			.title + p {
-				margin-top: 0;
-			}
-
-			.pagination {
-				display: grid;
-				grid-template-columns: 1fr 1fr 1fr;
-				padding-top: 0;
-				padding-bottom: 0;
-			}
-
-			.pagination .index {
-				text-align: center;
-			}
-
-			.pagination .next {
-				text-align: right;
-			}
-		</style>
+		<BaseHead 
+			title={title} 
+			description={description} 
+		/>
 	</head>
 
 	<body>
 		<Header />
-		<main>
-			<article>
-				{heroImage && <img width={720} height={360} src={heroImage} alt="" />}
-				<h1 class="title">{title}</h1>
-				<p>{description}</p>
-				{pubDate && <time>{pubDate}</time>}
-				{minutesRead && (<br><time><small>{minutesRead}</small></time>)}
-				{updatedDate && (<div>Last updated on <time>{updatedDate}</time></div>)}
-				<hr>
-				<slot />
-			</article>
-		</main>
-		{prevDoc || nextDoc ? (
-			<div class="max-width">
-				<hr>
-			</div>
-			<div class="max-width pagination">
-				{prevDoc ? (
-					<a href={prevDoc.url}>&larr; Go Back: {prevDoc.frontmatter.title}</a>
-				) : '<div></div>'}
-				<a class="index" href="/docs">Docs Index</a>
-				{nextDoc ? (
-					<a class="next" href={nextDoc.url}>{endOfDocs ? 'Start Over:' : 'Next Up:'} {nextDoc.frontmatter.title} &rarr;</a>
-				) : '<div></div>'}
-			</div>
-		) : ''}
+
+		<ArticleContents
+			heroImage={heroImage}
+			title={title}
+			description={description}
+			pubDate={pubDate}
+			minutesRead={minutesRead}
+			updatedDate={updatedDate}
+		><slot /></ArticleContents>
+
+		<PrevNext 
+			prevDoc={prevDoc} 
+			nextDoc={nextDoc} 
+			endOfDocs={endOfDocs} 
+			beginningOfDocs={beginningOfDocs} 
+		/>
+
 		<Footer />
 	</body>
 </html>

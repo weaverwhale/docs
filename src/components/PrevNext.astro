@@ -1,0 +1,35 @@
+---
+const { prevDoc, nextDoc, endOfDocs, beginningOfDocs } = Astro.props;
+---
+
+<style scoped>
+  .pagination {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  
+  .pagination .index {
+    text-align: center;
+  }
+
+  .pagination .next {
+    text-align: right;
+  }
+</style>
+
+{prevDoc || nextDoc ? (
+  <div class="max-width">
+    <hr>
+  </div>
+  <div class="max-width pagination">
+    {prevDoc ? (
+      <a href={prevDoc.url}>&larr; Go Back: {prevDoc.frontmatter.title}</a>
+    ) : '<div></div>'}
+    <a class="index" href="/docs">Docs Index</a>
+    {nextDoc ? (
+      <a class="next" href={nextDoc.url}>{endOfDocs ? 'Start Over:' : 'Next Up:'} {nextDoc.frontmatter.title} &rarr;</a>
+    ) : '<div></div>'}
+  </div>
+) : ''}
