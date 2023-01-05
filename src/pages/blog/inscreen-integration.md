@@ -315,7 +315,10 @@ export const inScreenCreateToken = (req) => {
 ```javascript
 // Private Express Route
 // services/account-manager/src/endpoints/users/index.ts
-userRouter.post('/inScreenProvisionShopAndUsers', inScreenProvisionShopAndUsers);
+userRouter.post(
+  '/inScreenProvisionShopAndUsers', 
+  inScreenProvisionShopAndUsers
+);
 ```
 
 And the actual method
@@ -376,17 +379,20 @@ const getInScreenToken = async (shopId, userId) => {
   // @ts-ignore
   window.inScreen.initialize({
     endpoint: 'https://us.inscreen.com/graphql',
-    tenantId: '6fdeef5c-96a2-4d3f-9f78-c966de28bbbb',
+    tenantId: '<TENANT-ID>',
     token: token,
   });
 }
 ```
 
-And the associated component that utilizes the API call and InScreen SDK
+And the associated component that utilizes the API call and InScreen SDK is shown below
+
+**NOTE:** The `InScreenTooltip` is for the button, and the `InScreenAnchor` is for the actual element/screenshot
 
 ```javascript
-export const InScreenButton = (props) => {
-  const uid = props.uid || Math.random()
+
+export const InScreenTooltip = (props) => {
+  const uid = props.uid || 0
   const shopId = useSelector((state: RootState) => state.currentShopId);
   const user = useSelector((state: RootState) => state.user);
   loadInScreen(shopId, user.uid)
@@ -425,8 +431,15 @@ export const InScreenButton = (props) => {
           </div>
         </inscreen-inline-anchor-indicator>
       </div>
-      <inscreen-anchor version="A" locator={uid} />
     </Tooltip>
+  )
+}
+
+export const InScreenAnchor = (props) => {
+  const uid = props.uid || 0
+
+  return (
+    <inscreen-anchor version="A" locator={uid} />
   )
 }
 ```
