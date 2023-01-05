@@ -6,5 +6,8 @@ export const get = () =>
 		title: SITE_TITLE,
 		description: SITE_DESCRIPTION,
 		site: import.meta.env.SITE,
-		items: import.meta.glob('./docs/**/*.{md,mdx}'),
+		items: {
+			...import.meta.glob('./onboarding/**/*.{md,mdx}'), 
+			...import.meta.glob('./blog/**/*.{md,mdx}')
+		},
 	});
