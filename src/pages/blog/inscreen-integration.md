@@ -167,15 +167,18 @@ Anchors that work with the drawer must have a title defined `title="TEXT HERE"`.
 
 Like all inScreen standard components, the drawer can be styled and configured with CSS variables.
 
-## Sandbox Integration
-
-Below is some code wrapped in a DCL function, that follows the above documentation in order to integrate on the frontend
-
 <!--
 -----------------------------------------------
 BEGIN SANDBOX CODE
 -----------------------------------------------
 -->
+
+<!-- 
+
+## Sandbox Integration
+
+Below is some code wrapped in a DCL function, that follows the above documentation in order to integrate on the frontend 
+
 
 <link rel="dns-prefetch" href="https://cdn.inscreen.com/" />
 <link rel="dns-prefetch" href="https://us.inscreen.com/" />
@@ -229,8 +232,8 @@ BEGIN SANDBOX CODE
   document.addEventListener('DOMContentLoaded', async () => {
     // initialize backend 
     // using client side sandbox auth for sandbox
-    const apiKey = "QofgwGuuAyfXmgiB4iwiYlESH8JpnVC2pBcZZceb_pY";
-    const tenantId = "6fdeef5c-96a2-4d3f-9f78-c966de28bbbb";
+    const apiKey = "testkey";
+    const tenantId = "starwars";
 
     const response = fetch('https://us.inscreen.com/api/self-service/auth', {
       method: 'POST',
@@ -257,6 +260,8 @@ BEGIN SANDBOX CODE
     });
   })
 </script>
+
+-->
 
 <!--
 -----------------------------------------------

@@ -1,7 +1,7 @@
 ---
 layout: "../layouts/OnboardingPost.astro"
 title: "Triple Whale Developer Documents"
-description: "A microsite for onboarding new developers"
+description: "A microsite new Triple Whale developers"
 ---
 
 <style>
