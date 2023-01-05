@@ -167,9 +167,15 @@ Anchors that work with the drawer must have a title defined `title="TEXT HERE"`.
 
 Like all inScreen standard components, the drawer can be styled and configured with CSS variables.
 
-## Test Integration
+## Sandbox Integration
 
 Below is some code wrapped in a DCL function, that follows the above documentation in order to integrate on the frontend
+
+<!--
+-----------------------------------------------
+BEGIN SANDBOX CODE
+-----------------------------------------------
+-->
 
 <link rel="dns-prefetch" href="https://cdn.inscreen.com/" />
 <link rel="dns-prefetch" href="https://us.inscreen.com/" />
@@ -182,6 +188,11 @@ Below is some code wrapped in a DCL function, that follows the above documentati
     padding: 0.15rem 1rem;
     border-radius: 5px;
     box-shadow: 1px 1px 5px rgba(var(--black), 0.5);
+  }
+
+  inscreen-inline-anchor-indicator h1 {
+    color: var(--white) !important;
+    line-height: 1;
   }
 </style>
 
@@ -197,6 +208,21 @@ Below is some code wrapped in a DCL function, that follows the above documentati
 <div class="element-to-enable-inscreen-on">
   <h1 id="inscreen-2">inScreen Anchor - Stickies</h1>
   <inscreen-anchor version="A" locator="inscreen-2" behavior="floating-controls" behavior-style="stickies" />
+</div>
+
+<br>
+
+<div class="element-to-enable-inscreen-on">
+  <inscreen-inline-anchor-indicator
+    hidden
+    locator="inscreen-3"
+    action="single-floating-control"
+  >
+    <h1 slot="empty">💬 Custom Anchor - Empty State</h1>
+    <h1 slot="read">💬 Custom Anchor - Read State</h1>
+    <h1 slot="unread">💬 Custom Anchor - Unread State</h1>
+  </inscreen-inline-anchor-indicator>
+  <inscreen-anchor version="A" locator="inscreen-3" />
 </div>
 
 <script>
@@ -231,3 +257,180 @@ Below is some code wrapped in a DCL function, that follows the above documentati
     });
   })
 </script>
+
+<!--
+-----------------------------------------------
+END SANDBOX CODE
+-----------------------------------------------
+-->
+
+## Integrating Into Backend
+
+Now that we have a demo, we can integrate into TW's codebase
+
+Given the above, we need to create one public endpoint, and one private one (with one additional at some point):
+
+1. **Public** - An endpoint on our end that provides a token to use on the frontend
+1. **Private** - Pushing a Shop and it's users to InScreen; this allows InScreen to know who we are on the frontend after doing above
+1. **Private 2** - Pushing ***ALL*** Shops and users to Inscreen
+
+Attaching to the `account-manager` microservice, we can create these endpoints
+
+### Public
+
+```javascript
+// Public Express Route
+// services/account-manager/src/endpoints/users/index.ts
+userRouter.post(
+  '/inScreenCreateToken',
+  apiConfig({
+    openApi: { interfaces: ['client'], security: { firebase: [] } },
+  }),
+  wrapperApi(inScreenCreateToken, (req) => [req.body.shopId, req.body.userId])
+);
+```
+
+And the actual method
+
+```javascript
+// services/account-manager/src/endpoints/users/inScreen.ts
+export const inScreenCreateToken = (req) => {
+  // shopId = myshopify domain
+  // userId = tw firebase ID
+  const { shopId, userId } = req.body;
+
+  const token = createInScreenToken(apiKey, {
+    v: 1,
+    teamId: shopId,
+    userId: userId,
+  });
+
+  return {
+    token: token,
+  };
+```
+
+### Private
+
+```javascript
+// Private Express Route
+// services/account-manager/src/endpoints/users/index.ts
+userRouter.post('/inScreenProvisionShopAndUsers', inScreenProvisionShopAndUsers);
+```
+
+And the actual method
+
+```javascript
+// services/account-manager/src/endpoints/users/inScreen.ts
+export const inScreenProvisionShopAndUsers = async (req, res) => {
+  const { shopId } = req.body;
+  if (!shopId) return res.status(403).json({ message: 'shopId required' });
+  const shop = (await firestore().collection('shops').doc(shopId).get()).data();
+  const users = await getShopUsers(shopId);
+
+  const provisionedShop = await provisionShop(shop, users);
+  const provisionedUsers = await Promise.all(users.map((u) => provisionUser(u, shopId)));
+
+  return res.json({
+    provisionedShop,
+    provisionedUsers,
+  });
+};
+```
+
+The third method would be similar to this, but loop through *ALL* stores 
+
+**NOTE:** This is obviously missing some methods, as it is still in development, and this code meant to just give an idea of the work needed
+
+## Integrating Into Frontend
+
+The frontend integration is quite similar to the sandbox above, with a few differences
+
+Instead of requesting a token from InScreen, we request the token from our new endpoint detailed above
+
+**NOTE:** Since we use a React SPA, we unfortunately have to load their SDK inline rather than attaching to the header
+
+```javascript
+const loadInScreen = (shopId, user) => {
+  const exists = document.getElementById('inScreen');
+  if (!exists) {
+    const script = document.createElement('script');
+    script.src = 'https://cdn.inscreen.com/web-components/v/0/script.js';
+    script.id = 'inScreen';
+    document.body.appendChild(script);
+    script.onload = () => { 
+      getInScreenToken(shopId, user)
+    }
+  }
+};
+
+const getInScreenToken = async (shopId, userId) => {
+  const response = await axiosInstance.post(
+    '/v2/account-manager/users/inScreenCreateToken',
+    { shopId, userId }
+  );
+
+  const { token } = response.data;
+
+  // initialize frontend
+  // @ts-ignore
+  window.inScreen.initialize({
+    endpoint: 'https://us.inscreen.com/graphql',
+    tenantId: '6fdeef5c-96a2-4d3f-9f78-c966de28bbbb',
+    token: token,
+  });
+}
+```
+
+And the associated component that utilizes the API call and InScreen SDK
+
+```javascript
+export const InScreenButton = (props) => {
+  const uid = props.uid || Math.random()
+  const shopId = useSelector((state: RootState) => state.currentShopId);
+  const user = useSelector((state: RootState) => state.user);
+  loadInScreen(shopId, user.uid)
+
+  return (
+    <Tooltip content="Add a comment">
+      <div 
+        className="opacity-0 group-hover:opacity-100 transition-opacity"
+        style={{ marginBottom: '-3px' }}
+      >
+        <inscreen-inline-anchor-indicator 
+          hidden 
+          locator={uid} 
+          action="single-floating-control" 
+        >
+          <div slot="empty">
+            <ConversationMinor  
+              width={16}
+              height={16}
+              className="fill-logo flex cursor-pointer"
+            />
+          </div>
+          <div slot="read">
+            <ConversationMinor  
+              width={16}
+              height={16}
+              className="fill-logo flex cursor-pointer"
+            />
+          </div>
+          <div slot="unread">
+            <ConversationMinor 
+              width={16}
+              height={16}
+              className="fill-logo flex cursor-pointer"
+            />
+          </div>
+        </inscreen-inline-anchor-indicator>
+      </div>
+      <inscreen-anchor version="A" locator={uid} />
+    </Tooltip>
+  )
+}
+```
+
+And Voila; we have a working version of InScreen on the Summary page
+
+**WIP** - I'm sure there will be more updates here, but having a high level understanding of how to integrate a new product into TW's codebase is nice to have/reference in the future
