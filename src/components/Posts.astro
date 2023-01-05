@@ -9,7 +9,7 @@ const { posts } = Astro.props
 
 <div class="posts">
   {
-    posts.map((post) => (
+    posts.map((post: any) => (
       <a class="post" href={post.url}>
         <h2>{post.frontmatter.title}</h2>
         <time datetime={post.frontmatter.pubDate}>
