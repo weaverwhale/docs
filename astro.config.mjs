@@ -8,7 +8,7 @@ import vue from "@astrojs/vue";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://example.com',
+  site: 'https://tw-dev-docs.netlify.app/',
   integrations: [sitemap(), vue()],
   markdown: {
     remarkPlugins: [remarkReadingTime, 'remark-code-titles'],
