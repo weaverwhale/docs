@@ -1,0 +1,100 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+const { minutesRead } = Astro.props.frontmatter;
+
+export interface Props {
+	content: {
+		title: string;
+		description: string;
+		pubDate?: string;
+		updatedDate?: string;
+		heroImage?: string;
+	};
+}
+
+const { content: { title, description, pubDate, updatedDate, heroImage }} = Astro.props;
+
+const docs = (
+	await Astro.glob('../pages/blog/*.{md,mdx}'))
+	.sort((a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf());
+
+// NOTE
+// in this case, prev is next and next is prev (historically)
+let prevDoc: any = false
+let nextDoc: any = false
+let endOfDocs: boolean = false
+let beginningOfDocs: boolean = false
+docs.forEach((post, i) => { 
+	if(post.frontmatter.title === title) {
+		prevDoc = docs[i + 1] || docs[0]
+		if(!docs[i + 1]) beginningOfDocs = true
+
+		nextDoc = docs[i - 1] || docs[docs.length - 1]
+		if(!docs[i - 1]) endOfDocs = true
+	}
+})
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+		<style>
+			.title {
+				font-size: 2em;
+				margin: 0.25em 0 0;
+			}
+
+			.title + p {
+				margin-top: 0;
+			}
+
+			.pagination {
+				display: grid;
+				grid-template-columns: 1fr 1fr 1fr;
+				padding-top: 0;
+				padding-bottom: 0;
+			}
+
+			.pagination .index {
+				text-align: center;
+			}
+
+			.pagination .next {
+				text-align: right;
+			}
+		</style>
+	</head>
+
+	<body>
+		<Header />
+		<main>
+			<article>
+				{heroImage && <img width={720} height={360} src={heroImage} alt="" />}
+				<h1 class="title">{title}</h1>
+				<p>{description}</p>
+				{pubDate && <time>{pubDate}</time>}
+				{minutesRead && (<br><time><small>{minutesRead}</small></time>)}
+				{updatedDate && (<div>Last updated on <time>{updatedDate}</time></div>)}
+				<hr>
+				<slot />
+			</article>
+		</main>
+		{prevDoc || nextDoc ? (
+			<div class="max-width">
+				<hr>
+			</div>
+			<div class="max-width pagination">
+				{prevDoc ? (
+					<a href={prevDoc.url}>&larr; Go Back: {prevDoc.frontmatter.title}</a>
+				) : '<div></div>'}
+				<a class="index" href="/docs">Docs Index</a>
+				{nextDoc ? (
+					<a class="next" href={nextDoc.url}>{endOfDocs ? 'Start Over:' : 'Next Up:'} {nextDoc.frontmatter.title} &rarr;</a>
+				) : '<div></div>'}
+			</div>
+		) : ''}
+		<Footer />
+	</body>
+</html>

@@ -6,7 +6,10 @@ import SearchDocs from '../components/SearchDocs.vue';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
 
 // Use Astro.glob() to fetch all posts, and then sort them by date.
-const posts = (await Astro.glob('../pages/docs/*.{md,mdx}')).map(glob => ({
+const blog = await Astro.glob('../pages/blog/*.{md,mdx}')
+const onboarding = await Astro.glob('../pages/onboarding/*.{md,mdx}')
+
+const posts = [...blog, ...onboarding].map(glob => ({
 	...glob,
 	frontmatter: glob.frontmatter, // for lint below
 	content: glob.compiledContent() 

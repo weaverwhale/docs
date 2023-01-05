@@ -1,5 +1,5 @@
 ---
-layout: "../../layouts/DocsPost.astro"
+layout: "../../layouts/BlogPost.astro"
 title: "InScreen Integration"
 description: "Information about InScreen"
 pubDate: "Jan 3 2023"

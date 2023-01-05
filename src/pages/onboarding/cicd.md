@@ -1,5 +1,5 @@
 ---
-layout: "../../layouts/DocsPost.astro"
+layout: "../../layouts/OnboardingPost.astro"
 title: "CI/CD"
 description: "Continuous Integration / Continuous Deployment Flow"
 pubDate: "Dec 20 2022"

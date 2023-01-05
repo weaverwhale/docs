@@ -1,5 +1,5 @@
 ---
-layout: "../../layouts/DocsPost.astro"
+layout: "../../layouts/OnboardingPost.astro"
 title: "Videos"
 description: "Useful videos for getting started and understanding the codebase"
 pubDate: "Dec 15 2022"

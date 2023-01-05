@@ -17,7 +17,7 @@ export interface Props {
 const { content: { title, description, pubDate, updatedDate, heroImage }} = Astro.props;
 
 const docs = (
-	await Astro.glob('../pages/docs/*.{md,mdx}'))
+	await Astro.glob('../pages/onboarding/*.{md,mdx}'))
 	.sort((a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf());
 
 // NOTE

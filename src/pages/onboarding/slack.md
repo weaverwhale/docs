@@ -1,5 +1,5 @@
 ---
-layout: "../../layouts/DocsPost.astro"
+layout: "../../layouts/OnboardingPost.astro"
 title: "Slack"
 description: "Channels you should be a part of as a developer"
 pubDate: "Dec 14 2022"
