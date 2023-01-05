@@ -1,6 +1,7 @@
 :root {
 	--font-family: -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
 	--black: #202223;
+	--yellow: #e9ff66;
 	--blue: #1877f2;
 	--middle-blue: #0D3854;
 	--dark-blue: #062940;
@@ -30,7 +31,7 @@ body {
 }
 
 a {
-	color: var(--middle-blue);
+	color: var(--blue);
 }
 
 nav a {
@@ -112,7 +113,7 @@ hr {
 	margin-right: 0.2em;
 	right: 100%;
 	visibility: hidden;
-	opacity: 0.5;
+	color: var(--blue);
 }
 
 .title:hover a:before {
