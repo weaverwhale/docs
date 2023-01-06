@@ -1,6 +1,6 @@
 ---
 layout: "../../layouts/OnboardingPost.astro"
-title: "Developers"
+title: "😃 Developers"
 description: "A general idea of which lead developers do what, and who to ask for what"
 pubDate: "Dec 15 2022"
 ---

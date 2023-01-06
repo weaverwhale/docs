@@ -1,6 +1,6 @@
 ---
 layout: "../../layouts/OnboardingPost.astro"
-title: "Slack"
+title: "💬 Slack"
 description: "Channels you should be a part of as a developer"
 pubDate: "Dec 14 2022"
 ---

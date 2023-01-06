@@ -1,6 +1,6 @@
 ---
 layout: "../../layouts/OnboardingPost.astro"
-title: "Installation"
+title: "⚙️ Installation"
 description: "Follow these directions for full setup instructions on a fresh machine"
 pubDate: "Dec 13 2022"
 ---

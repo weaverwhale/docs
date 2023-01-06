@@ -1,6 +1,6 @@
 ---
 layout: "../../layouts/OnboardingPost.astro"
-title: "CI/CD"
+title: "🤖 CI/CD"
 description: "Continuous Integration / Continuous Deployment Flow"
 pubDate: "Dec 20 2022"
 ---

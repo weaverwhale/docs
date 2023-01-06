@@ -1,6 +1,6 @@
 ---
 layout: "../../layouts/OnboardingPost.astro"
-title: "Site Overview"
+title: "📙 Site Overview"
 description: "A high level overview of the Triple Whale application"
 pubDate: "Dec 11 2022"
 ---

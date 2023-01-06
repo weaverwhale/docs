@@ -1,6 +1,6 @@
 ---
 layout: "../../layouts/OnboardingPost.astro"
-title: "Repositories"
+title: "📦 Repositories"
 description: "A high level overview of how repositories are structured"
 pubDate: "Dec 12 2022"
 ---

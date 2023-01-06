@@ -1,6 +1,6 @@
 ---
 layout: "../../layouts/BlogPost.astro"
-title: "InScreen Integration"
+title: "🖥 InScreen Integration"
 description: "Information about InScreen"
 pubDate: "Jan 3 2023"
 ---
