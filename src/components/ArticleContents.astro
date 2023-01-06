@@ -16,8 +16,10 @@ const {
     <p>{description}</p>
     {pubDate && <time>{pubDate}</time>}
     {minutesRead && (<br><time><small>{minutesRead}</small></time>)}
+    <br/>
+    <br />
     {updatedDate && (<div>Last updated on <time>{updatedDate}</time></div>)}
-    <hr>
+    <hr />
     <slot />
   </article>
 </main>

@@ -8,8 +8,9 @@
 	--light-blue: #c0d6ea;
 	--white: #fff;
 	--off-white: #e7e7e7;
-	--gray: #999;
 	--light-gray: #bababa;
+	--gray: #999;
+	--dark-gray: rgb(124, 124, 124);
 	--background: #f6f6f7;
 	--box-shadow: rgb(0 0 0 / 8%) 0px 0px 8px;
 	--box-shadow-deep: rgb(0 0 0 / 16%) 0px 0px 8px;
@@ -91,6 +92,10 @@ hr {
 	background: var(--light-gray);
 }
 
+time {
+	font-size: 0.9em;
+}
+
 /* remark */
 .toc {
 	border-bottom: 1px solid var(--light-gray);
@@ -135,18 +140,28 @@ hr {
 	border-radius: 0.8rem;
 	padding: 0.625em 1.25em;
 	box-shadow: var(--box-shadow);
-	transition: all 0.1s var(--ease-in-out);
 	text-decoration: none;
 	color: var(--black);
 }
 
-.posts .post:hover {
-	box-shadow: var(--box-shadow-deep);
-	color: var(--blue);
+.post, .post * {
+	transition: all 0.1s var(--ease-in-out);
+}
+
+.post time {
+	color: var(--dark-gray);
 }
 
 .posts .post h2 {
 	margin: 0.25em 0 0;
+}
+
+.posts .post:hover {
+	box-shadow: var(--box-shadow-deep);
+}
+
+.posts .post:hover * {
+	color: var(--blue);
 }
 
 /* 
