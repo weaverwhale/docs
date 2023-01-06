@@ -1,13 +1,13 @@
 ---
 layout: "../../layouts/BlogPost.astro"
 title: "🖥 InScreen Integration"
-description: "Information about InScreen"
+description: "This will serve as a placeholder for information as I attempt to integrate"
 pubDate: "Jan 3 2023"
 ---
 
-This will serve as a placeholder for information as I attempt to integrate [InScreen](https://www.inscreen.com/).
+Information about [InScreen](https://www.inscreen.com/)
 
-For easy access: [Inscreen Documentation](https://docs.inscreen.com/)
+For easy access, [Inscreen Documentation](https://docs.inscreen.com/)
 
 ## Definitions
 
