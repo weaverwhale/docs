@@ -27,5 +27,8 @@
     "remark-autolink-headings": "^7.0.1",
     "remark-code-titles": "^0.1.2",
     "vue": "^3.2.30"
+  },
+  "devDependencies": {
+    "@netlify/plugin-lighthouse": "^4.0.3"
   }
 }
