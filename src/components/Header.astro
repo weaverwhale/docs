@@ -1,5 +1,6 @@
 ---
 import HeaderLink from './HeaderLink.astro';
+import LightDarkMode from './LightDarkMode.astro';
 import { SITE_TITLE } from '../config';
 ---
 
@@ -15,6 +16,7 @@ import { SITE_TITLE } from '../config';
 			<HeaderLink href="/onboarding">Onboarding</HeaderLink>
 			<HeaderLink href="/blog">Blog</HeaderLink>
 			<HeaderLink href="/search">Search</HeaderLink>
+			<LightDarkMode />
 		</nav>
 	</div>
 </header>
@@ -22,7 +24,7 @@ import { SITE_TITLE } from '../config';
 <style>
 	header {
 		margin: 0em 0 2em;
-		background: var(--dark-blue);
+		background: var(--header-background);
 		position: sticky;
 		top: -1px;
 		z-index: 1;

@@ -1,0 +1,52 @@
+<div id="dark-light-toggle">
+  <i id="light">🌝</i>
+  <i id="dark">🌚</i>
+</div>
+
+<script>
+  // Want this to run before DCL
+  // Know below are avail because they are above ^
+  const lightDarkToggle = document.getElementById('dark-light-toggle')
+  const colorSchemeQueryList = window.matchMedia('(prefers-color-scheme: dark)')
+  const currentColorScheme = window.localStorage.getItem('lightDark') === 'true'
+  const htmlEl = document.querySelector('html')
+
+  const setColorScheme = (darkMode: boolean) => {
+    window.localStorage.setItem('lightDark', darkMode.toString())
+
+    if(darkMode) {
+      lightDarkToggle?.classList.add('dark')
+      htmlEl?.classList.add('dark')
+    } else {
+      lightDarkToggle?.classList.remove('dark')
+      htmlEl?.classList.remove('dark')
+    }
+  }
+
+  setColorScheme(currentColorScheme)
+  lightDarkToggle?.addEventListener('click', () => setColorScheme(!lightDarkToggle.classList.contains('dark')))
+  colorSchemeQueryList.addEventListener("change", (e) => setColorScheme(e.matches || false))
+</script>
+
+<style>
+  #dark-light-toggle {
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  #dark-light-toggle i {
+    font-style: normal;
+  }
+
+  #dark-light-toggle #dark {
+    display: none;
+  }
+
+  #dark-light-toggle.dark #dark {
+    display: block;
+  }
+
+  #dark-light-toggle.dark #light {
+    display: none;
+  }
+</style>
