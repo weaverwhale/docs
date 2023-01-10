@@ -239,7 +239,7 @@ Automatically will deploy after merge to production via a GitHub Action
 ```bash
 cd <SOMEPATH>/triplewhale/client
 nvm use 18
-npm run dev:install
+npm run dev:install #this will usually fix errors
 npm start
 ```
 
