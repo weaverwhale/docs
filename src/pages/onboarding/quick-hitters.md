@@ -209,7 +209,7 @@ As detailed above (and below for client), after successful deployment, we should
 
 ```bash
 cd <SOMEPATH>/triplewhale/admin
-npm start
+npm run start
 ```
 
 ### Deploy to Staging
@@ -240,12 +240,22 @@ Automatically will deploy after merge to production via a GitHub Action
 cd <SOMEPATH>/triplewhale/client
 nvm use 18
 npm run dev:install #this will usually fix errors
-npm start
+npm start #will start and use local backend
+```
+
+To run on a specific backend, run one of these
+
+```bash
+npm run start-dev:local #local (tw up)
+npm run start-dev:staging #staging backend
+npm run start-dev:production #production backend
 ```
 
 ### Deploy to Staging
 
-Automatically will deploy after creating a pull request
+Automatically will create staging environment after creating a pull request
+
+Will be updated automatically after pushing to that PR/branch
 
 ### Deploy to Production
 
