@@ -271,7 +271,15 @@ npm run start-dev:production #production backend
 
 Automatically will create staging environment after creating a pull request
 
-Will be updated automatically after pushing to that PR/branch
+Will be updated automatically after pushing to that PR/branch, but points to STAGING
+
+#### If you want a production link with current branch
+
+Checkout branch, and run below to acquire a real link leveraging production DB
+
+```bash
+npm run deploy:channel:prod #IMPORTANT: change branch within this node process
+```
 
 ### Deploy to Production
 

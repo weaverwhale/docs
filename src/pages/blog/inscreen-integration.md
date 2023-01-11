@@ -468,9 +468,11 @@ And Voila; we have a working version of InScreen on the Summary page
 #### Provisioning all beta stores
 
 ```javascript
-
+// @TODO
 ```
 
 #### Adding "reactivity" when new users are created
 
-#### PUB/SUB (Publish/Subscribe)
+This is done via PUB/SUB (Publish/Subscribe)
+
+@TODO
