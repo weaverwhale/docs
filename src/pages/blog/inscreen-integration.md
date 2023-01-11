@@ -1,7 +1,7 @@
 ---
 layout: "../../layouts/BlogPost.astro"
 title: "🖥 InScreen Integration"
-description: "This will serve as a placeholder for information as I attempt to integrate"
+description: "Info dump as I attempt to integrate InScreen"
 pubDate: "Jan 3 2023"
 ---
 
@@ -332,7 +332,7 @@ And the actual method
 // services/account-manager/src/endpoints/users/inScreen.ts
 export const inScreenProvisionShopAndUsers = async (req, res) => {
   const { shopId } = req.body;
-  if (!shopId) return res.status(403).json({ message: 'shopId required' });
+  if (!shopId) return res.status(400).json({ message: 'shopId required' });
   const shop = (await firestore().collection('shops').doc(shopId).get()).data();
   const users = await getShopUsers(shopId);
 
@@ -444,11 +444,33 @@ export const InScreenAnchor = (props) => {
   const uid = props.uid || 0
 
   return (
-    <inscreen-anchor version="A" locator={uid} />
+    <inscreen-anchor 
+      version="A" 
+      locator={uid} 
+      behavior="inline-button" 
+    />
   )
 }
 ```
 
 And Voila; we have a working version of InScreen on the Summary page
 
-**WIP** - I'm sure there will be more updates here, but having a high level understanding of how to integrate a new product into TW's codebase is nice to have/reference in the future
+### Important Params
+
+[Behavior - Inline Button](https://docs.inscreen.com/adding-elements/anchor#anchor-parameters:~:text=behavior%3D%22inline%2Dbutton,can%20open%20it): inScreen won't add any standard behavior, but when reaching the page from a notification deep-link, inScreen will automatically open the deep-linked thread from an inline button that can open it.
+
+[associated-data (optional)](https://docs.inscreen.com/adding-elements/anchor#anchor-parameters:~:text=associated%2Ddata,of%20the%20screenshot): A simple JSON-encoded map of keys to values (values may be strings, numbers, or Booleans) of data that is relevant to the anchor. This data will be attached to threads that are created on the anchor and included in tabular form when viewing the thread outside of context (email notifications, inbox, etc.). It can be useful to add context to the thread beyond the screenshot, or instead of the screenshot.
+
+[deep-link-url](https://docs.inscreen.com/adding-elements/anchor#anchor-parameters:~:text=deep%20link%20url) (optional, default is the current page URL without query parameters): The URL to which notifications will link. It is recommended to set this value if a locator string is used in different application strings, to ensure all notifications always send users to the same canonical page.
+
+### Phase 2
+
+#### Provisioning all beta stores
+
+```javascript
+
+```
+
+#### Adding "reactivity" when new users are created
+
+#### PUB/SUB (Publish/Subscribe)

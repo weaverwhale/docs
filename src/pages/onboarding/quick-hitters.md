@@ -30,6 +30,14 @@ git merge master # may need to commit here
 git submodule update --recursive --remote
 ```
 
+#### Reinstall all Services
+
+This is especially helpful when pulling changes from master
+
+```bash
+npm run services:reinstall
+```
+
 ### TW CLI
 
 After git/npm actions, to run any of the backend services we utilize the Triple Whale CLI
