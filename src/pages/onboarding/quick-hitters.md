@@ -291,4 +291,4 @@ To *force* a deployment: after merging a PR into master, checkout master, pull, 
 npm run release:prod
 ```
 
-**NOTE**: only merge after the `api-gateway` GCP service has been deployed
+**NOTE**: in instances with a backend and corresponding frontend PR, only merge client PR after the `api-gateway` GCP service has been successfully deployed
