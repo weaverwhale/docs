@@ -269,7 +269,7 @@ npm run start-dev:production #production backend
 
 ### Deploy to Staging
 
-Automatically will create staging environment after creating a pull request
+Automatically will create staging environment after creating a pull request, and post a message to the `staging-channels` slack
 
 Will be updated automatically after pushing to that PR/branch, but points to STAGING
 
@@ -284,5 +284,11 @@ npm run deploy:channel:prod #IMPORTANT: change branch within this node process
 ### Deploy to Production
 
 Automatically will deploy after merge to production via a GitHub Action
+
+To *force* a deployment: after merging a PR into master, checkout master, pull, and run:
+
+```bash
+npm run release:prod
+```
 
 **NOTE**: only merge after the `api-gateway` GCP service has been deployed
