@@ -285,10 +285,4 @@ npm run deploy:channel:prod #IMPORTANT: change branch within this node process
 
 Automatically will deploy after merge to production via a GitHub Action
 
-To *force* a deployment: after merging a PR into master, checkout master, pull, and run:
-
-```bash
-npm run release:prod
-```
-
 **NOTE**: in instances with a backend and corresponding frontend PR, only merge client PR after the `api-gateway` GCP service has been successfully deployed
