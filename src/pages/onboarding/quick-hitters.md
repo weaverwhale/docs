@@ -210,7 +210,7 @@ For instance, if we were updating a package within backend, we go thorugh the de
 tw deploy <SERVICE> # select staging and/or shofifi
 ```
 
-As detailed above (and below for client), after successful deployment, we should see rocket ships in slack
+**NOTE**: After a successful deployment, you will be notified in the `staging-channels` slack channel with three rocket ships
 
 🚀🚀🚀
 
@@ -238,7 +238,7 @@ npm run start
 
 Automatically will deploy after merge to production via a GitHub Action
 
-**NOTE**: You will be notified in the `staging-channels-admin` slack channel with three rocket ships
+**NOTE**: After a successful deployment, you will be notified in the `staging-channels-admin` slack channel with three rocket ships
 
 🚀🚀🚀
 
@@ -286,3 +286,7 @@ npm run deploy:channel:prod #IMPORTANT: change branch within this node process
 Automatically will deploy after merge to production via a GitHub Action
 
 **NOTE**: in instances with a backend and corresponding frontend PR, only merge client PR after the `api-gateway` GCP service has been successfully deployed
+
+**NOTE**: After a successful deployment, you will be notified in the `staging-channels` slack channel with three rocket ships
+
+🚀🚀🚀
