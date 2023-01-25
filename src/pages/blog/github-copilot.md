@@ -1,7 +1,7 @@
 ---
 layout: "../../layouts/BlogPost.astro"
 title: "🧑‍🚀 Github Copilot"
-description: "Info about CoPilot"
+description: "Information about Github Copilot"
 pubDate: "Jan 11 2023"
 ---
 

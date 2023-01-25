@@ -1,7 +1,7 @@
 ---
 layout: "../../layouts/BlogPost.astro"
 title: "🖥 InScreen Integration"
-description: "Info dump as I attempt to integrate InScreen"
+description: "Brain dump as I attempt to integrate InScreen"
 pubDate: "Jan 3 2023"
 ---
 
