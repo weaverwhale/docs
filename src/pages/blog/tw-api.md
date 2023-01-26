@@ -181,19 +181,7 @@ An example for one of the most important/powerful metrics TW offers: `netProfit`
 
 ### Putting it all together
 
-Within a helper file, `sanitizeSummaryResponse`, we take our response, and map it to our dictionary values, based on the requirements below:
-
-```javascript
-{
-  "section": {{section}},
-  "label": {{label}},
-  "unit": {{unit}},
-  "values", {
-    {{date}}:{{value}},
-    {{date}}:{{value}}
-  }
-}
-```
+Within a helper file, `sanitizeSummaryResponse`, we take our response, and map it to our dictionary values.
 
 Here is the function that does this magic:
 
