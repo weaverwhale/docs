@@ -38,8 +38,23 @@ To learn more about the specifics of each endpoint, and to explore the full rang
 The Triple Whale API uses OAuth2 for authentication. In order to access the API, you must first [register your app with the Triple Whale OAuth server via the Triple Whale website](https://developers.triplewhale.com/register-new-app). 
 
 Make sure to include proper app and redirect URIs in your application, or your requests will be rejected by the OAuth server.
+  
+### Adding Endpoint to Hydra
 
-## Adding Endpoints
+As the api grows, we want to expose data/endpoints from our internal API to the external API service. To do this, it's actually super easy using the `apiConfig` middleware, directing the openApi configuration to leverage `hydra`:
+
+```javascript
+import { apiConfig } from '@tw/utils/module/express';
+
+// implement this helper if not used
+ apiConfig({
+  // hydra: [] is the magic that adds the endpoint to the API
+  openApi: { interfaces: ['client'], security: { firebase: [], hydra: [] } },
+  selfAuth: true,
+}),
+```
+
+## Summary Page Endpoint
 
 One piece of information that people frequently would like access to is the summary page data. Specifically, the data that is exclusive to Triple Whale, like ROAS or Net Profit. 
 
@@ -49,6 +64,40 @@ In order to provide this data in API form, the team has created a special micros
 
 Our intention is to take this data and make it available to the public API, which I will try to document the process of here.
 
-## Summary Page Endpoint
+#### compareStats
 
-@TODO WIP
+All this data described above boils down to one function, and therefore one endpoint: `compareStats`
+
+```javascript
+
+endpointWrapper(async (req, res) => {
+  logger.info(req.body);
+
+  // validate
+  const valid = validateApiRequest(req);
+  if (!valid.success) {
+    return res.status(400).json(valid);
+  }
+
+  // ensure we have access to the store's data
+  if (!req.body.shopDomain) req.body.shopDomain = req.header('x-tw-shop-id');
+  if (req['user']) {
+    const authResp = await checkUserAccessToResource(
+      req['user'],
+      'shopify',
+      req.body.shopDomain as string
+    );
+    if (!authResp.result === true) return deny(res);
+  }
+
+  // COMPARE STATS
+  const stats: CompareStatsResponse = await compareStats(req.body);
+  res.send(stats);
+})
+```
+
+@TODO explain `compareStats`
+
+@TODO explain SummarySection dictionaries
+
+@TODO dictionary & types location: `/Users/michaelweaver/Websites/triplewhale/backend/packages/constants/src/SummaryMetrics/SummaryMetrics.ts`
