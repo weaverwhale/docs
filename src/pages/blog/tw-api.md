@@ -185,6 +185,8 @@ Within a helper file, `sanitizeSummaryResponse`, we take our response, and map i
 
 Here is the function that does this magic:
 
+@TODO this is subject to change, or happening on the frontend
+
 ```javascript
 export const sanitizeSummaryResponse = (
   response: CompareStatsResponse 
