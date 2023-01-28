@@ -1,7 +1,7 @@
 ---
 layout: "../../layouts/BlogPost.astro"
-title: "🐋 Triple Whale Public API"
-description: "Information about the public API, interfacing with it, and adding endpoints"
+title: "🐋 Public API"
+description: "Information about the public Triple Whale API, interfacing with it, and adding endpoints"
 pubDate: "Jan 25 2023"
 ---
 
