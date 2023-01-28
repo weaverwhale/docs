@@ -185,33 +185,34 @@ Within a helper file, `sanitizeSummaryResponse`, we take our response, and map i
 
 Here is the function that does this magic:
 
-@TODO this is subject to change, or happening on the frontend
-
 ```javascript
-export const sanitizeSummaryResponse = (
-  response: CompareStatsResponse 
-): sanitizedSummaryResponse => {
-  ['comparisons', 'calculatedStats'].forEach((key) => {
-    response[key] = response[key]?.flatMap((section) => {
-      return Object.keys(section).flatMap((k) => {
-        // look through our dictionary
-        // if we find a match, add that dictionary information
-        // along with the value we were sent
-        var dictionaryKey = Object.keys(SummaryMetrics).find(
-          (x) => SummaryMetrics[x].metricId === k
-        );
-        if (dictionaryKey) {
-          return {
-            ...SummaryMetrics[dictionaryKey],
-            value: section[k],
-          };
-        }
+// @ts-ignore
+// Helper function to group our stats by "service"
+const groupByKey = (list, key) => list.reduce((hash, obj) => ({...hash, [obj[key]]:( hash[obj[key]] || [] ).concat(obj)}), {})
 
-        return section;
-      });
-    });
-  });
+const dictateData = (data: SummaryPageResponse) => {
+  const flatDictatedData = Object.keys(SummaryMetrics).flatMap((metric) => {
+    const currentMetric = SummaryMetrics[metric as SummaryMetricIdsTypes];
+    const percentChange = data.comparisons[0][currentMetric.metricId] & (
+      data.comparisons[0][currentMetric.metricId].web?.revenue
+      || data.comparisons[0][currentMetric.metricId]
+    )
+    const value = data.calculatedStats[0][currentMetric.metricId] && (
+      data.calculatedStats[0][currentMetric.metricId].web?.revenue
+      || data.calculatedStats[0][currentMetric.metricId]
+    )
 
-  return response as unknown as sanitizedSummaryResponse;
-};
+    return {
+      // Add dictionary data to our formatted data
+      ...currentMetric,
+      source: currentMetric.services[0] || currentMetric.icon,
+      value,
+      percentChange
+    };
+  })
+
+  return groupByKey(flatDictatedData, 'icon')
+}
 ```
+
+**@NOTE:** CURRENTLY, this function exists on the frontend to format the raw data send from our endpoint. This is subject to change based on the requirements.
