@@ -181,11 +181,11 @@ An example for one of the most important/powerful metrics TW offers: `netProfit`
 
 ## `@tw/stats` STATS Helpers
 
-> "The most important lines in Triple Whale" - Chezi
+> "This trick is the most important line(s) in Triple Whale" - Chezi
 
 Within `compareStats`, there are a few "Triple Whale trick" lines that are SUPER important, and have been with the TW app since it's inception.
 
-These lines map dicitonary files to helper functions, which generate and map data on the fly. 
+These lines map dicitonary files to helper functions, which generate and map data on the fly.
 
 These lines are replicated both on the frontend (for JIT calculation) and on the backend, within the `summary-page` microservice
 
