@@ -179,40 +179,110 @@ An example for one of the most important/powerful metrics TW offers: `netProfit`
 ...
 ```
 
-### Putting it all together
+## `@tw/stats` STATS Helpers
 
-Within a helper file, `sanitizeSummaryResponse`, we take our response, and map it to our dictionary values.
+> "The most important lines in Triple Whale" - Chezi
 
-Here is the function that does this magic:
+Within `compareStats`, there are a few "Triple Whale trick" lines that are SUPER important, and have been with the TW app since it's inception.
+
+These lines map dicitonary files to helper functions, which generate and map data on the fly. 
+
+These lines are replicated both on the frontend (for JIT calculation) and on the backend, within the `summary-page` microservice
+
+
 
 ```javascript
-// @ts-ignore
-// Helper function to group our stats by "service"
-const groupByKey = (list, key) => list.reduce((hash, obj) => ({...hash, [obj[key]]:( hash[obj[key]] || [] ).concat(obj)}), {})
-
-const dictateData = (data: SummaryPageResponse) => {
-  const flatDictatedData = Object.keys(SummaryMetrics).flatMap((metric) => {
-    const currentMetric = SummaryMetrics[metric as SummaryMetricIdsTypes];
-    const percentChange = data.comparisons[0][currentMetric.metricId] & (
-      data.comparisons[0][currentMetric.metricId].web?.revenue
-      || data.comparisons[0][currentMetric.metricId]
-    )
-    const value = data.calculatedStats[0][currentMetric.metricId] && (
-      data.calculatedStats[0][currentMetric.metricId].web?.revenue
-      || data.calculatedStats[0][currentMetric.metricId]
-    )
-
-    return {
-      // Add dictionary data to our formatted data
-      ...currentMetric,
-      source: currentMetric.services[0] || currentMetric.icon,
-      value,
-      percentChange
-    };
-  })
-
-  return groupByKey(flatDictatedData, 'icon')
-}
+metricsToCompare.forEach((selectorName: string) => {
+  if (selectorName && STATS[selectorName]) {
+    try {
+      // Below is line 333 of compareStats.ts
+      // This line maps all the metric/chart IDs to the proper funciton
+      calculatedPeriodData[selectorName] = STATS[selectorName as string](state);
+      // if isNaN set to 0, unless type is object
+      if (
+        calculatedPeriodData[selectorName] === null ||
+        calculatedPeriodData[selectorName] === Infinity ||
+        (typeof calculatedPeriodData[selectorName] !== 'object' &&
+          isNaN(calculatedPeriodData[selectorName]))
+      ) {
+        calculatedPeriodData[selectorName] = 0; // workaround
+      }
+    } catch (e) {
+      console.log('ERROR ======== ', selectorName, e.message);
+    }
+  }
+});
 ```
 
-**@NOTE:** CURRENTLY, this function exists on the frontend to format the raw data send from our endpoint. This is subject to change based on the requirements.
+#### This line alone is what makes the summary page work.
+
+Similarly on the `Summary.ts` file on the frontend:
+
+```javascript
+export const getTileValue = (state: Partial<RootState>, originalMetric: BaseSummaryMetric<any>) => {
+  let value = 0;
+  try {
+    value =
+      state && originalMetric && typeof STATS[originalMetric.metricId] === 'function'
+        // HERE! Notice it's the same as above
+        ? STATS[originalMetric.metricId](state)
+        : 0;
+    if (originalMetric?.statObjectKey) {
+      value = value[originalMetric.statObjectKey];
+      if (value && originalMetric.specificStat) {
+        value = value[originalMetric.specificStat];
+      }
+    }
+  } catch (e) {
+    console.error(e);
+    Sentry.captureException(e);
+  }
+  return value;
+};
+```
+
+and the method below it:
+
+```javascript
+export const selectTileChart = createSelector(
+  [(state: RootState) => state, (state: RootState, metric: BaseSummaryMetric<any>) => metric],
+  (state, metric) => {
+    let chart: AbstractChart[] = [];
+    try {
+      chart =
+        metric && typeof STATS[metric.chart!] === 'function'
+          //  You get the idea... right?
+          ? STATS[metric.chart!]?.(state)
+          : [];
+
+      if (metric?.statObjectKey) {
+        chart = chart[metric.statObjectKey];
+        if (chart && metric.specificStat) {
+          chart = chart[metric.specificStat];
+        }
+      }
+    } catch (e) {
+      console.error(e);
+      Sentry.captureException(e);
+    }
+    return chart;
+  }
+);
+```
+
+We basically need to duplicate this functionality in our new API endpoint
+
+## Putting it all together
+
+> "Need to do some mapping" -Chezi
+
+Now that we have our dictionary, our STATS helper, and our raw data, we can combine it all together, and return some formatted data!
+
+Within a DTO (Data transfer object) mapper, we take our response, map it to our dictionary values, and return it in our response
+
+```javsacript
+STATS[metric.statsId](response.currentPeriodRawStats) = Stats Data
+STATS[metric.metricId](response.currentPeriodRawStats) = Metric Data
+```
+
+This not only ensures that if we change the API in the future, we will know about it from this DTO (it will return 500 or similart), but we also ensure the end user has pre-formatted data, without having access to our "raw data"
