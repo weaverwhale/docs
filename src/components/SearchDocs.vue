@@ -96,6 +96,6 @@ span.tag {
 	background: var(--yellow);
 	padding: 2px 5px;
 	text-transform: capitalize;
-	color: var(--black);
+	color: var(--black) !important;
 }
 </style>
