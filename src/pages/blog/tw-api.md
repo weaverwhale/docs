@@ -280,9 +280,50 @@ Now that we have our dictionary, our STATS helper, and our raw data, we can comb
 
 Within a DTO (Data transfer object) mapper, we take our response, map it to our dictionary values, and return it in our response
 
-```javsacript
-STATS[metric.statsId](response.currentPeriodRawStats) = Stats Data
-STATS[metric.metricId](response.currentPeriodRawStats) = Metric Data
+```javascript
+export const sanitizeSummaryResponse = (data: CompareStatsResponse) => {
+  const dictatedData = Object.keys(SummaryMetrics).flatMap((metric) => {
+    const currentMetric = SummaryMetrics[metric as SummaryMetricIdsTypes];
+
+    const percentChange =
+      data.comparisons[0][currentMetric.metricId] &
+      (data.comparisons[0][currentMetric.metricId].web?.revenue ||
+        data.comparisons[0][currentMetric.metricId]);
+    const value =
+      data.calculatedStats[0][currentMetric.metricId] &&
+      (data.calculatedStats[0][currentMetric.metricId].web?.revenue ||
+        data.calculatedStats[0][currentMetric.metricId]);
+
+    let chart = [];
+    try {
+      chart =
+        currentMetric && typeof STATS[currentMetric.chart!] === 'function'
+          // THE MAGIC!! 
+          // VOILA!
+          ? STATS[currentMetric.chart!]?.(data.currentPeriodRawStats)
+          : [];
+
+      if (currentMetric?.statObjectKey) {
+        chart = chart[currentMetric.statObjectKey];
+        if (chart && currentMetric.specificStat) {
+          chart = chart[currentMetric.specificStat];
+        }
+      }
+    } catch (e) {}
+
+    return {
+      ...currentMetric,
+      percentChange,
+      value,
+      chart,
+    };
+  });
+
+  return {
+    key: data.key,
+    data: dictatedData,
+  };
+};
 ```
 
 This not only ensures that if we change the API in the future, we will know about it from this DTO (it will return 500 or similart), but we also ensure the end user has pre-formatted data, without having access to our "raw data"
