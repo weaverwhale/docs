@@ -326,4 +326,4 @@ export const sanitizeSummaryResponse = (data: CompareStatsResponse) => {
 };
 ```
 
-This not only ensures that if we change the API in the future, we will know about it from this DTO (it will return 500 or similart), but we also ensure the end user has pre-formatted data, without having access to our "raw data"
+This not only ensures that if we change the API in the future, we will know about it from this DTO (it will return `500`-level error), but we also ensure the end user has pre-formatted data, without having access to our "raw data"

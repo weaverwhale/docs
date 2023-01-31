@@ -13,6 +13,15 @@ pubDate: "Jan 11 2023"
 
 Trained on billions of lines of code, GitHub Copilot turns natural language prompts into coding suggestions across dozens of languages.
 
-## Examples
+## Example
 
-@TODO
+```javascript
+// a javascript function that exports hello world after accepting a name
+// below is all generated from copilot, I just pressed tab:
+//---------------------------------------------------------------
+// prior to using copilot, you would have to write the function yourself
+// now, you can just ask copilot to write it for you
+function helloWorld(name) { 
+  console.log(`Hello ${name}!`); 
+}
+```
