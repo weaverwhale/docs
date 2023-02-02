@@ -303,6 +303,7 @@ export const sanitizeSummaryResponse = (data: CompareStatsResponse) => {
         try {
           returnData[type.t][period] =
             currentMetric && typeof STATS[currentMetric[type.id]] === 'function'
+              // THE MAGIC LINE 🪄🪄🪄
               ? STATS[currentMetric[type.id]]?.(data[`${period}PeriodRawStats`])
               : returnData[type.t][period];
           if (currentMetric?.statObjectKey) {
