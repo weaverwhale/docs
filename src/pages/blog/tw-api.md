@@ -284,44 +284,52 @@ Within a DTO (Data transfer object) mapper, we take our response, map it to our 
 export const sanitizeSummaryResponse = (data: CompareStatsResponse) => {
   const dictatedData = Object.keys(SummaryMetrics).flatMap((metric) => {
     const currentMetric = SummaryMetrics[metric as SummaryMetricIdsTypes];
+    const valueType = currentMetric.type || 'currency';
 
-    const percentChange =
-      data.comparisons[0][currentMetric.metricId] &
-      (data.comparisons[0][currentMetric.metricId].web?.revenue ||
-        data.comparisons[0][currentMetric.metricId]);
-    const value =
-      data.calculatedStats[0][currentMetric.metricId] &&
-      (data.calculatedStats[0][currentMetric.metricId].web?.revenue ||
-        data.calculatedStats[0][currentMetric.metricId]);
+    const returnData = {
+      delta:
+        data.comparisons[0][currentMetric.metricId] &
+        (data.comparisons[0][currentMetric.metricId].web?.revenue ||
+          data.comparisons[0][currentMetric.metricId]),
+      values: { current: 0, previous: 0 },
+      charts: { current: [], previous: [] },
+    };
 
-    let chart = [];
-    try {
-      chart =
-        currentMetric && typeof STATS[currentMetric.chart!] === 'function'
-          // THE MAGIC!! 
-          // VOILA!
-          ? STATS[currentMetric.chart!]?.(data.currentPeriodRawStats)
-          : [];
+    ['current', 'previous'].map((period) => {
+      [
+        { t: 'values', id: 'metricId' },
+        { t: 'charts', id: 'chart' },
+      ].map((type) => {
+        try {
+          returnData[type.t][period] =
+            currentMetric && typeof STATS[currentMetric[type.id]] === 'function'
+              ? STATS[currentMetric[type.id]]?.(data[`${period}PeriodRawStats`])
+              : returnData[type.t][period];
+          if (currentMetric?.statObjectKey) {
+            returnData[type.t][period] = returnData[type.t][currentMetric.statObjectKey];
+            if (returnData[type.t][period] && currentMetric.specificStat) {
+              returnData[type.t][period] = returnData[type.t][currentMetric.specificStat];
+            }
+          }
+        } catch (e) {}
+      });
+    });
 
-      if (currentMetric?.statObjectKey) {
-        chart = chart[currentMetric.statObjectKey];
-        if (chart && currentMetric.specificStat) {
-          chart = chart[currentMetric.specificStat];
-        }
-      }
-    } catch (e) {}
+    // remove unnecessary keys
+    delete currentMetric.icon;
+    delete currentMetric.color;
+    delete currentMetric.valueToFixed;
+    delete currentMetric.type;
 
     return {
       ...currentMetric,
-      percentChange,
-      value,
-      chart,
+      valueType,
+      ...returnData,
     };
   });
 
   return {
-    key: data.key,
-    data: dictatedData,
+    metrics: dictatedData,
   };
 };
 ```
