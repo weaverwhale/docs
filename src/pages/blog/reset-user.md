@@ -11,7 +11,7 @@ pubDate: "Mar 7 2023"
 
 A user keeps being added to a store, but empty - no first/last name, no email, no related store, just associated to a pod
 
-<img src="/public/empty-user.png" />
+<img src="/empty-user.png" />
 
 <br>
 
