@@ -19,4 +19,6 @@ A user keeps being added to a store, but empty - no first/last name, no email, n
 
 Delete the user, and have them sign up again via firebase/firefoo
 
-Both from the store's `/users` collection, and the `/users` collection
+Both from the store's `/users` collection, and the `/shops` collection
+
+@TODO

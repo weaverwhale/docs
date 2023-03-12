@@ -22,6 +22,8 @@ Specifically, the queue was behind almost an hour, causing reporting within trip
 
 We turned off the pixel, then removed the Shopify JWT access token. This stops us from collecting data via the pixel, and stop recieving messages from Shopify after a purchase
 
+@TODO
+
 <br>
 
 ## Helpful Links
