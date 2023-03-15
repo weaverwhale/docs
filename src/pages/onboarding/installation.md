@@ -158,6 +158,7 @@ npm config set @tw:registry https://us-central1-npm.pkg.dev/shofifi/npm-packages
 https://cloud.google.com/sdk/docs/install
 
 ```bash
+cd backend
 npx google-artifactregistry-auth --yes --repo-config=./services/api/.npmrc
 gcloud auth application-default login
 gcloud config set project triple-whale-staging

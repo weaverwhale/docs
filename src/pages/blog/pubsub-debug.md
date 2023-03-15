@@ -22,7 +22,7 @@ Specifically, the queue was behind almost an hour, causing reporting within trip
 
 We turned off the pixel, then removed the Shopify JWT access token. This stops us from collecting data via the pixel, and stop recieving messages from Shopify after a purchase
 
-@TODO
+@TODO what was the root cause??
 
 <br>
 
@@ -39,7 +39,7 @@ Since we are admin, we can access any shopify store with the `?shop-domain=` que
 &direct=1
 ```
 
-direct=1 adds Direct, Excluded and Non-attributed orders to the pixel page. When you select Linear All model the total number of Pixel Purchases should equal the total number of purchases reported by Shopify on the Summary page
+`direct=1 adds Direct, Excluded and Non-attributed orders to the pixel page. When you select Linear All model the total number of Pixel Purchases should equal the total number of purchases reported by Shopify on the Summary page
 
 Cloud run link for Pixel: https://console.cloud.google.com/run/detail/us-central1/pixel/metrics?project=shofifi
 
