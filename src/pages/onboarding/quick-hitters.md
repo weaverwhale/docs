@@ -156,7 +156,7 @@ Once testing is complete (for instance checking an endpoint via Postman, or test
 
 ### Publish To Staging
 
-Ensure you are checked out on your test branch and up to date with master. Test, create a pull request, then publish to staging for additionaly testing:
+Ensure you are checked out on your test branch and up to date with master. Test, create a pull request, then publish to staging for additional testing:
 
 ```bash
 cd <SOMEPATH>/triplewhale/backend
