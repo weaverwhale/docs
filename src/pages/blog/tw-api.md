@@ -284,7 +284,7 @@ Within a DTO (Data transfer object) mapper, we take our response, map it to our 
 export const sanitizeSummaryResponse = (data: CompareStatsResponse) => {
   const dictatedData = Object.keys(SummaryMetrics).flatMap((metric) => {
     const currentMetric = SummaryMetrics[metric as SummaryMetricIdsTypes];
-    const valueType = currentMetric.type || 'currency';
+    const { id, title, metricId, tip, type, services } = currentMetric;
 
     const returnData = {
       delta:
@@ -316,15 +316,13 @@ export const sanitizeSummaryResponse = (data: CompareStatsResponse) => {
       });
     });
 
-    // remove unnecessary keys
-    delete currentMetric.icon;
-    delete currentMetric.color;
-    delete currentMetric.valueToFixed;
-    delete currentMetric.type;
-
     return {
-      ...currentMetric,
-      valueType,
+      id,
+      title,
+      metricId,
+      tip,
+      services,
+      type,
       ...returnData,
     };
   });

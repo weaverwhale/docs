@@ -7,12 +7,12 @@ pubDate: "Dec 15 2022"
 
 ####  A who's who of Triple Whale, according to Chesi
 
-## Chesi Hoyzer 
+## Chezi Hoyzer
 
 - Core / Team Lead
 - Been everywhere but pixel
 
-### Platform Stream Dev Slack Channel
+### Platform Stream Team
 
 - All Chezi’s people
 - Can ask questions
@@ -29,7 +29,7 @@ pubDate: "Dec 15 2022"
 
 ## Moshe Fromer
 
-- First developer hired onto teak
+- First developer hired onto team
 - Genius
 - Doing data stuff, but also doing everything
 
@@ -37,7 +37,7 @@ pubDate: "Dec 15 2022"
 
 - UI and architecture
 
-## Shmulik 
+## Shmulik
 
 - AI & Machine Learning
 

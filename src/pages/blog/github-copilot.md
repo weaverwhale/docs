@@ -25,3 +25,9 @@ function helloWorld(name) {
   console.log(`Hello ${name}!`); 
 }
 ```
+
+## How to use it?
+
+You can use it in VSCode, Atom, and JetBrains IDEs. You can also use it in the browser with GitHub Codespaces.
+
+Everyone in TW should have a licesne for it. If you don't, please contact your manager.

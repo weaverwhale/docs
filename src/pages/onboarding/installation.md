@@ -103,7 +103,6 @@ Install the Google Cloud
 
 ```bash
 brew install --cask google-cloud-sdk && gcloud init
-Gcloud init
 ```
  
 https://cloud.google.com/sdk/docs/install-sdk
@@ -198,7 +197,7 @@ sudo npm link
 ```bash
 for service in services/*;
 echo 'Running npm i for' $service &&  npm i --prefix $service --ignore-scripts; 
-done
+done;
 ```
 
 Look at the readme in `/packages/cli` if this is not working and follow instructions there.
