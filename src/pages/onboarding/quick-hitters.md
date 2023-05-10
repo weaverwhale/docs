@@ -68,7 +68,9 @@ tw up <SERVICE>
 #### Testing with Prod DB
 
 ```bash
-tw up --project=shofifi
+tw up <SERVICE> --project=shofifi
+#or
+tw up <SERVICE> --prod
 ```
 
 ### Deploy to Staging
