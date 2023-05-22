@@ -2,7 +2,7 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/695b4c61-655f-4313-bc57-32f3a7cdd26a/deploy-status)](https://app.netlify.com/sites/tw-dev-docs/deploys)
 
-Site link: tw-dev-docs.netlify.app
+Site link: https://tw-dev-docs.netlify.app
 
 ## Based on Astro Starter Kit
 
