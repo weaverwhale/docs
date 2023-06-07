@@ -155,6 +155,13 @@ Once testing is complete (for instance checking an endpoint via Postman, or test
 
 #### `tw publish` is to packages as `tw deploy` is to backend. We use this to push `@tw` packages to both staging and production
 
+### Generating Tokens for Testing
+
+Sometimes we want to test an endpoint locally, but require a token to do so. We can do that with the TW CLI as well!
+
+```bash
+tw g-token --prod
+```
 
 ### Publish To Staging
 
