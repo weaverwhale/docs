@@ -155,14 +155,6 @@ Once testing is complete (for instance checking an endpoint via Postman, or test
 
 #### `tw publish` is to packages as `tw deploy` is to backend. We use this to push `@tw` packages to both staging and production
 
-### Generating Tokens for Testing
-
-Sometimes we want to test an endpoint locally, but require a token to do so. We can do that with the TW CLI as well!
-
-```bash
-tw g-token --prod
-```
-
 ### Publish To Staging
 
 Ensure you are checked out on your test branch and up to date with master. Test, create a pull request, then publish to staging for additional testing:
@@ -222,6 +214,15 @@ tw deploy <SERVICE> # select staging and/or shofifi
 **NOTE**: After a successful deployment, you will be notified in the `staging-channels` slack channel with three rocket ships
 
 🚀🚀🚀
+
+### Generating Tokens for Testing
+
+Sometimes we want to test an endpoint locally, but require a token to do so (such as Postman). We can generate one with the TW CLI as well!
+
+```bash
+tw g-token --prod
+```
+
 
 <br>
 <br>
