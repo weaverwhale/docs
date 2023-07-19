@@ -34,6 +34,8 @@ OpsGenie is the main tool we use for on-call scheduling and escalation. It is wh
 
 GCP is where all our infra lives; it is also where we can see the logs of our services. We can also see the logs of our services in DataDog, and it also provides links to GCP
 
+<br>
+
 ## General Issues
 
 Generally speaping, there are three types of notifications we see:
@@ -71,6 +73,8 @@ Other times, this is a sign of a bad code deploy, or bad requests that are causi
 Sometimes when one service is down, it can cause other services to go down
 
 Make sure to check the logs of other services to see if they are also having issues
+
+<br>
 
 ## General Decision Tree
 
