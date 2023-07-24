@@ -1,34 +1,37 @@
 ---
-layout: "../../layouts/BlogPost.astro"
+layout: "../../layouts/OnCallPost.astro"
 title: "🆘 Standard Operating Procedure"
-description: "An error is reported in OpsGenie, and you are on-call. What do you do?"
+description: "An error is reported, and you are on-call. What do you do?"
 pubDate: "Jul 23 2023"
 ---
 
 ```mermaid
 flowchart TB
-    A[Recieve alert] --> B[Acknowledge the<br> issue in Slack<br>-]
+    A[Recieve alert] --> B[Acknowledge the<br> issue]
     B --> C[Assess the issue]
-    C -- Look at App, Dashboards, Logs, Commits --> C
-    C --> D[Escalate the issue]
-        C --> E[Resolve the issue]
-        D -- If Critical --> F[Call Chezi/Liad]
-        D -- Not Critical --> G[Alert Maintainer]
+        C -- Look at App, Dashboards, Logs, Commits --> C
+        C -- Easily Fixable --> E[Resolve the issue]
+        C -- Not Critical --> G[Alert Maintainer]
+        C -- Critical --> F[Call Chezi/Liad]
+    G --> H[Investigate the issue]
+    F --> H
+    H --> E
 ```
 
 ## Step 1: Acknowledge the issue
 
-1. ack within opsgenie
+1. `ack` within opsgenie
 1. Add the `:ack:` emoji to the slack thread (acknowledged)
 1. add the priority `:p1:` … `:p5:`
 1. Start a thread on the issue, like `"Looking into it..."` (communication for this issue will happen in this thread)
 
 ## Step 2: Asses the issue
 
+### Investigate the issue
+
 1. Look at the DD dashboard
-    1. Start looking if we have errors - in case you have you can go to the logs by clicking on “Runtime Logs”   
 1. Look at the latest github commits to see if some change aligns with the alert timeframe,
-1. Look for anomalies or correlations from datadog 
+1. Look for anomalies or correlations from datadog
 
 ### Communicate updates
 
@@ -39,6 +42,12 @@ flowchart TB
 
 In the slack alert datadog will list the official maintainers for the piece of code that was written, and the last person to deploy the service. If you’re unsure of the next step, contact these people to see if they have ideas about what might be wrong.
 
-## Optional: Resolve the issue:
+If you’re still unsure, contact Chezi or Liad.
 
-### If you found the issue, and fixed it, update the Slack thread!
+## Optional: Resolve the issue (if you can)
+
+If you found the issue, and fixed it, update the Slack thread!
+
+If you feel you can contribute to the fixing of the bug in any meaningful way, please do! The more brains we have on the issue, the better!
+
+PRs are always welcome, and if you’re unsure about the fix, feel free to ask for help!

@@ -1,0 +1,74 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PrevNext from '../components/PrevNext.astro'
+import ArticleContents from '../components/ArticleContents.astro';
+
+const { minutesRead } = Astro.props.frontmatter;
+
+export interface Props {
+	content: {
+		title: string;
+		description: string;
+		pubDate?: string;
+		updatedDate?: string;
+		heroImage?: string;
+	};
+}
+
+const { content: { title, description, pubDate, updatedDate, heroImage } } = Astro.props;
+
+const docs = (
+	await Astro.glob('../pages/oncall/*.{md,mdx}'))
+	.sort((a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf());
+
+// NOTE
+// in this case, prev is next and next is prev (historically)
+let prevDoc: any = false
+let nextDoc: any = false
+let endOfDocs: boolean = false
+let beginningOfDocs: boolean = false
+docs.forEach((post, i) => { 
+	if(post.frontmatter.title === title) {
+		prevDoc = docs[i + 1] || docs[0]
+		if(!docs[i + 1]) beginningOfDocs = true
+
+		nextDoc = docs[i - 1] || docs[docs.length - 1]
+		if(!docs[i - 1]) endOfDocs = true
+	}
+})
+---
+
+<html lang="en">
+	<head>
+		<BaseHead 
+			title={title} 
+			description={description} 
+		/>
+	</head>
+
+	<body>
+		<Header />
+
+		<ArticleContents
+			heroImage={heroImage}
+			title={title}
+			description={description}
+			pubDate={pubDate}
+			minutesRead={minutesRead}
+			updatedDate={updatedDate}
+		><slot /></ArticleContents>
+
+		<PrevNext 
+			prevDoc={prevDoc} 
+			nextDoc={nextDoc} 
+			endOfDocs={endOfDocs} 
+			beginningOfDocs={beginningOfDocs} 
+			docsIndex={'/oncall'}
+			docsName={'On Call'}
+		/>
+
+		<Footer />
+	</body>
+</html>

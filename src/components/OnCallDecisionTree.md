@@ -1,12 +1,3 @@
----
-layout: "../../layouts/BlogPost.astro"
-title: "🧶 Decision Tree"
-description: ""
-pubDate: "Jul 24 2023"
----
-
-## WIP
-
 ```mermaid
 flowchart TB
     A[Recieve alert] --> B[Acknowledge the<br> issue in Slack<br>-]

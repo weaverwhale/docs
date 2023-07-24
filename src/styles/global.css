@@ -216,3 +216,12 @@ time {
 .posts .post:hover * {
 	color: var(--post-text-hover);
 }
+
+.flowchart-link {
+	stroke: var(--body-text) !important;
+}
+
+.marker {
+	fill: var(--body-text) !important;
+	stroke: var(--body-text) !important;
+}
