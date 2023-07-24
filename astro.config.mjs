@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import addClasses from './add-classes.mjs';
 import { remarkReadingTime } from './remark-reading-time.mjs';
+import { remarkDiagram } from './remark-diagram.mjs';
 import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
@@ -11,7 +12,11 @@ export default defineConfig({
   site: 'https://tw-dev-docs.netlify.app/',
   integrations: [sitemap(), vue()],
   markdown: {
-    remarkPlugins: [remarkReadingTime, 'remark-code-titles'],
+    remarkPlugins: [
+      remarkDiagram,
+      remarkReadingTime, 
+      'remark-code-titles'
+    ],
 		rehypePlugins: [
 			'rehype-slug',
 			['rehype-autolink-headings', { behavior: 'prepend' }],
