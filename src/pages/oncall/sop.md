@@ -16,6 +16,7 @@ flowchart TB
     G --> H[Investigate the issue]
     F --> H
     H --> E
+    E --> I[Close the loop]
 ```
 
 ## Step 1: Acknowledge the issue
@@ -55,5 +56,7 @@ PRs are always welcome, and if you’re unsure about the fix, feel free to ask f
 ## Closing the loop
 
 Once the issue is resolved, close loop within the slack thread.
+
+Usually the fixer of the issue will close the issue, but if that ends up being you, please don't forget to do so!
 
 Ideally, you can provide a sentence-or-two summary of what happened, and what the fix was. Code is even better! This helps document the entire engagement for future on-callers.
