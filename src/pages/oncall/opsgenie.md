@@ -17,8 +17,9 @@ Don't be on call for no reason! Ensure you are on call by checking the schedule 
 ## Confirm the schedule is correct
 
 General on-call is:
-- 9am to 5 pm - Mon thru Thurs
-- 7am Fri to 5pm Sat 
+
+- **9am** to **5pm** - **Mon** thru **Thurs**
+- **7am Fri** to **5pm Sat** 
 
 <img src="/oc-schedule.png" /><br>
 

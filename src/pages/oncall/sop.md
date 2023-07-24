@@ -51,3 +51,9 @@ If you found the issue, and fixed it, update the Slack thread!
 If you feel you can contribute to the fixing of the bug in any meaningful way, please do! The more brains we have on the issue, the better!
 
 PRs are always welcome, and if you’re unsure about the fix, feel free to ask for help!
+
+## Closing the loop
+
+Once the issue is resolved, close loop within the slack thread.
+
+Ideally, you can provide a sentence-or-two summary of what happened, and what the fix was. Code is even better! This helps document the entire engagement for future on-callers.
