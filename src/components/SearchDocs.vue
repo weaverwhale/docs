@@ -40,10 +40,11 @@ export default {
 		filteredPosts() {
 			return this.posts.filter((post) => {
 				let frontmatterHas = Object.keys(post.frontmatter).filter((key) => {
-					return post.frontmatter[key].toLowerCase().includes(this.search.toLowerCase())
+					return true
+					return post.frontmatter[key].toString().toLowerCase().includes(this.search.toLowerCase())
 				}).length > 0
 				
-				let contentHas = post.content?.toLowerCase().includes(this.search.toLowerCase())
+				let contentHas = post.content.toString().toLowerCase().includes(this.search.toLowerCase())
 
 				return frontmatterHas || contentHas
 			})
@@ -57,11 +58,11 @@ export default {
 	methods: {
 		matchingAreas(post) {
 			let matchingContent = Object.keys(post.frontmatter).filter((key) => {
-				const includes = post.frontmatter[key].toLowerCase().includes(this.search.toLowerCase())
+				const includes = post.frontmatter[key].toString().toLowerCase().includes(this.search.toLowerCase())
 				if(includes) return key
 			})
 			
-			let contentHas = post.content?.toLowerCase().includes(this.search.toLowerCase())
+			let contentHas = post.content.toString().toLowerCase().includes(this.search.toLowerCase())
 
 			return [...matchingContent, contentHas ? 'content' : '']
 		}

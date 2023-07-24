@@ -9,6 +9,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
 const posts = [
 	...await Astro.glob('../pages/onboarding/*.{md,mdx}'),
 	...await Astro.glob('../pages/blog/*.{md,mdx}'),
+	...await Astro.glob('../pages/oncall/*.{md,mdx}'),
 ].map(glob => ({
 	...glob,
 	frontmatter: glob.frontmatter, // for lint below
