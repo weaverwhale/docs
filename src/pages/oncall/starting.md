@@ -1,11 +1,13 @@
 ---
 layout: "../../layouts/BlogPost.astro"
-title: "📞 On-Call"
-description: "Helpful tips and info for being on-call"
+title: "☎️ Onboarding"
+description: "Getting started with on call"
 pubDate: "Jul 19 2023"
 ---
 
-On-Call might seem daunting, but it's not! The purpose of on-call is not to identify and fix issues, but to identify and escalate issues. The purpose of this document is to help you identify issues and escalate them to the right people.
+On-Call might seem daunting, but it's not! The purpose of on-call is not to identify and *fix* issues, but to identify and **escalate** issues.
+
+The purpose of this document is to help you identify issues and escalate them to the right people.
 
 We have some general tools we use, some general issues we see, and a general decision tree of how to deal with and escalate said issues.
 
@@ -22,9 +24,20 @@ The general tools you will interact with while being on-call are:
 
 Slack is the main tool we use for communication; it is also the first place most of us get notified of issues
 
+The main channels you will interact with are:
+
+1. #cloud-alerts
+1. #datadog-alerts
+1. #on-call
+1. #on-call-knowledge-sharing
+
 ### DataDog
 
 DataDog is the main tool we use for monitoring, and what we use to push alerts to Slack
+
+Within DataDog, we have a few main things we look at:
+
+#WIP
 
 ### OpsGenie
 
@@ -38,7 +51,7 @@ GCP is where all our infra lives; it is also where we can see the logs of our se
 
 ## General Issues
 
-Generally speaping, there are three types of notifications we see:
+Generally speaking, there are three types of notifications we see:
 
 1. Bad code / server errors
 1. Oldest unacked messages

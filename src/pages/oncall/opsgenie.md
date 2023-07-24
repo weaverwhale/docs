@@ -1,0 +1,1 @@
+# document setting up ops genie
