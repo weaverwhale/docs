@@ -1,6 +1,6 @@
 ---
 layout: "../../layouts/OnCallPost.astro"
-title: "1️⃣ Real Issue #1"
+title: "1️⃣ Real Issue"
 description: "Walking through a real world issue"
 pubDate: "Jul 25 2023"
 ---
