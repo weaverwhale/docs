@@ -9,17 +9,21 @@ pubDate: "Jul 20 2023"
   <iframe width="560" height="315" src="https://www.youtube.com/embed/390pZ9egMEs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 
-Opsgenie is the main "air traffic controller" for on-call, and is where we can see the history of alerts, and where we can acknowledge alerts.
+Opsgenie is the main "air traffic controller" for on-call, and is where we can see the history of alerts, and where we can acknowledge alerts
 
-To get started, you'll need to do a few things:
+Slack is where we get notified of alerts, assign priority, discuss causes and formulate solutions
 
-## Ensure you are indeed on-call
+To get started being on-call, you'll need to do a few things:
+
+## Opsgenie
+
+### Ensure you are indeed on-call
 
 <img src="/oncall-start.png" /><br>
 
-Don't be on call for no reason! You should get an email about it, and you can ensure this by checking the schedule in OpsGenie.
+Don't be on call for no reason! You should get an email about it, and you can ensure this by checking the schedule in OpsGenie
 
-## Confirm the schedule is correct
+### Confirm the schedule is correct
 
 General on-call is:
 
@@ -28,28 +32,43 @@ General on-call is:
 
 <img src="/oc-schedule.png" /><br>
 
-## Ensure your contact information is correct in OpsGenie
+### Ensure your contact information is correct
 
-Ideally you should have your phone number and email in OpsGenie, and subscribe for SMS, Voice, and the Mobile app which we cover below.
+Ideally you should have your phone number and email in OpsGenie, and subscribe for SMS, Voice, and the Mobile app which we cover below
 
 <img src="/oc-contact.png" /><br>
 
-## Ensure your notifications are set up correctly
+### Ensure your notifications are set up correctly
 
 <img src="/oc-rules.png" /><br>
 
-## Ensure you have the OpsGenie and Slack apps installed on your phone
+## Slack
 
-At least one of these apps should be installed on your phone, and notifications should be turned on for both.
+### Ensure you have notifications turned on
 
-This allows you to not be tied to your computer, and to be able to acknowledge alerts on the go.
+These are the two channels that we should *always* be investigating:
 
-We need to ack both within opsGenie and within slack, so it's important to have both apps installed.
+- `#datadog-alerts`
+- `#critical-bugs`
 
-**NOTE: if we do not ack within opsgenie within 15 minutes, everyone that has ever been on call will get blasted with notifications until someone acks it.**
-
-## Ensure you have notifications turned on for #datadog-alerts and #critical-bugs
-
-These are the two channels that we should *always* be investigating; you should have **ALL** notifications turned on for both.
+You should have **all messages** turned on for both
 
 <img src="/datadog-alerts.png" /><br>
+
+### Create groups for ease of access
+
+You can create groups in slack for ease of access to channels; here's an example:
+
+<img src="/slack-groups.png" /><br>
+
+## Apps
+
+**Both of these apps should be installed on your phone**
+
+**Notifications should be turned on for both**
+
+This allows you to not be tied to your computer and acknowledge alerts on the go
+
+We need to ack both within opsGenie and within slack, so it's important to have both apps installed
+
+**NOTE: if we do not ack within opsgenie within 15 minutes, everyone that has ever been on call will get blasted with notifications until someone acks it**
