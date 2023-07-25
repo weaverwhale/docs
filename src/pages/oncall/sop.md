@@ -31,13 +31,21 @@ flowchart TB
 
 ### Investigate the issue
 
+1. Look at the app
+    1. Is it down?
+    1. Is it slow?
+    1. Is it throwing errors?
+    1. Are there missing pieces of functionality?
 1. Look at the Datadog dashboard
     1. View the APM Dashboard for related services
     1. Compare the **dynamic range** to the last 5-15 min, 1-4 hours, 1-3 days
     1. View **Runtime Logs** and do the same
+        1. Runtime logs can provide links to GCP as well
 1. Look at the latest github commits
     1. See if some change aligns with the alert timeframe
     1. Look for anomalies or correlations from datadog
+
+As a general rule, if the app is working, it's not a critical issue. If not, it is.
 
 ### Communicate updates
 
@@ -46,9 +54,13 @@ flowchart TB
 
 ## Step 3: Escalate the issue
 
-In the slack alert datadog will list the official maintainers for the piece of code that was written, and the last person to deploy the service. If you’re unsure of the next step, contact these people to see if they have ideas about what might be wrong.
+In the slack alert, datadog will list the official maintainers for the piece of code that was written, and the last person to deploy the service. 
 
-If you’re still unsure, contact Chezi or Liad.
+If you’re unsure of the next step, contact these people to see if they have ideas about what might be wrong.
+
+If you’re still unsure, or have run out of options, contact Chezi.
+
+Only contact Liad as a last resort.
 
 ## Optional: Resolve the issue (if you can)
 
