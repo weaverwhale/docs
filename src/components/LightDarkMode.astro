@@ -11,11 +11,6 @@
   const currentColorScheme = window.localStorage.getItem('lightDark') === 'true'
   const htmlEl = document.querySelector('html')
 
-  /* 
-    Note: ternary exists earlier in DOM to prevent flash
-    See: BaseHead.astro#40
-  */
-
   const setColorScheme = (darkMode: boolean) => {
     window.localStorage.setItem('lightDark', darkMode.toString())
 
@@ -31,6 +26,12 @@
   setColorScheme(currentColorScheme)
   lightDarkToggle?.addEventListener('click', () => setColorScheme(!lightDarkToggle.classList.contains('dark')))
   colorSchemeQueryList.addEventListener("change", (e) => setColorScheme(e.matches || false))
+
+  // add transition class after DCL
+  // reduces flicker during dark mode
+  document.addEventListener('DOMContentLoaded', () => {
+		htmlEl?.classList.add('dcl');
+	})
 </script>
 
 <style>
