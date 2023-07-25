@@ -197,8 +197,8 @@ time {
 	color: var(--post-text);
 }
 
-.dcl .post,
-.dcl .post * {
+.loaded .post,
+.loaded .post * {
 	transition: all 0.1s var(--ease-in-out);
 }
 

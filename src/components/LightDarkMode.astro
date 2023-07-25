@@ -27,10 +27,10 @@
   lightDarkToggle?.addEventListener('click', () => setColorScheme(!lightDarkToggle.classList.contains('dark')))
   colorSchemeQueryList.addEventListener("change", (e) => setColorScheme(e.matches || false))
 
-  // add transition class after DCL
+  // add transition class after page load
   // reduces flicker during dark mode
-  document.addEventListener('DOMContentLoaded', () => {
-		htmlEl?.classList.add('dcl');
+  window.addEventListener('load', () => {
+		htmlEl?.classList.add('loaded');
 	})
 </script>
 
