@@ -5,6 +5,8 @@ description: "Getting started with on call"
 pubDate: "Jul 19 2023"
 ---
 
+<img src="/oncall-start.png" /><br>
+
 On-Call might seem daunting, but it's not! The purpose of on-call is not to identify and *fix* issues, but to identify and **escalate** issues.
 
 The purpose of this document is to help you identify issues and escalate them to the right people.
