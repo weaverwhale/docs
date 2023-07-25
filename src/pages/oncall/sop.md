@@ -35,8 +35,9 @@ flowchart TB
     1. View the APM Dashboard for related services
     1. Compare the **dynamic range** to the last 5-15 min, 1-4 hours, 1-3 days
     1. View **Runtime Logs** and do the same
-1. Look at the latest github commits to see if some change aligns with the alert timeframe,
-1. Look for anomalies or correlations from datadog
+1. Look at the latest github commits
+    1. See if some change aligns with the alert timeframe
+    1. Look for anomalies or correlations from datadog
 
 ### Communicate updates
 
