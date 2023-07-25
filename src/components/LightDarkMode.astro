@@ -11,6 +11,11 @@
   const currentColorScheme = window.localStorage.getItem('lightDark') === 'true'
   const htmlEl = document.querySelector('html')
 
+  /* 
+    Note: ternary exists earlier in DOM to prevent flash
+    See: BaseHead.astro#40
+  */
+
   const setColorScheme = (darkMode: boolean) => {
     window.localStorage.setItem('lightDark', darkMode.toString())
 
