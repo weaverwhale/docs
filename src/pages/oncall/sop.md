@@ -13,6 +13,7 @@ flowchart TB
         C -- Easily Fixable --> E[Resolve the issue]
         C -- Not Critical --> G[Alert Maintainer]
         C -- Critical --> F[Call Chezi/Liad]
+        C -- False alarm --> I[Close the loop]
     G --> H[Investigate the issue]
     F --> H
     H --> E
