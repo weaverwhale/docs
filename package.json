@@ -35,6 +35,6 @@
     "vue": "^3.2.30"
   },
   "devDependencies": {
-    "@netlify/plugin-lighthouse": "^4.0.3"
+    "@netlify/plugin-lighthouse": "^5.0.0"
   }
 }
