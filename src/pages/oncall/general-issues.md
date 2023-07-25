@@ -18,7 +18,9 @@ Generally speaking, there are only a handful of notifications we see:
 
 400/500 errors = **Real critical issue**
 
-Container restarts = *could* be bad
+These are the *least* common, but *most critical* issues, and should be addressed immediately
+
+Refer to the [Flowchart in the SOP](/oncall/sop) for how to proceed, especially if this is your first time on call
 
 ### Oldest Unacked Messages
 
