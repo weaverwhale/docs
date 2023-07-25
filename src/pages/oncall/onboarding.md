@@ -53,6 +53,8 @@ Within DataDog, we have dashboards for each service, and we can see:
 
 We can view different time periods to find anomalies or correlations within a service or between services, which usually starts to provide a picture of the issue at hand.
 
+A good place to start is the APM dashboard: https://us5.datadoghq.com/apm/home?env=shofifi
+
 ### GCP Console
 
 GCP is where all our infra lives; it is also where we can see the logs of our services. We can also see the logs of our services in DataDog, and it also provides links to GCP
