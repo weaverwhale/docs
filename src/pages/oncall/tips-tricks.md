@@ -9,12 +9,11 @@ pubDate: "Jul 26 2023"
 
 ### Find correlated metrics
 
-<img src="/find-correlated-metrics.png" />
-
 Clicking on an error, or line on a graph will allow you to view correlated metrics, as well as related traces and events. This can be useful for:
 
 - Similar metrics in the same container
 - Correlated events in different containers 
 - Similar issues in the past, and how they were resolved
 
+<img src="/find-correlated-metrics.png" /><br>
 <img src="/correlated-metrics.png" /><br>
