@@ -5,6 +5,9 @@ description: "Quick SOP for setting up Opsgenie & slack for on-call"
 pubDate: "Jul 20 2023"
 ---
 
+<div class="iframe-wrapper">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/390pZ9egMEs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
 
 Opsgenie is the main "air traffic controller" for on-call, and is where we can see the history of alerts, and where we can acknowledge alerts.
 
