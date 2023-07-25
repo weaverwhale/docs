@@ -15,7 +15,9 @@ To get started, you'll need to do a few things:
 
 ## Ensure you are indeed on-call
 
-Don't be on call for no reason! Ensure you are on call by checking the schedule in OpsGenie.
+<img src="/oncall-start.png" /><br>
+
+Don't be on call for no reason! You should get an email about it, and you can ensure this by checking the schedule in OpsGenie.
 
 ## Confirm the schedule is correct
 
@@ -33,8 +35,6 @@ Ideally you should have your phone number and email in OpsGenie, and subscribe f
 <img src="/oc-contact.png" /><br>
 
 ## Ensure your notifications are set up correctly
-
-
 
 <img src="/oc-rules.png" /><br>
 

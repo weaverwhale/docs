@@ -36,6 +36,8 @@ The main channels you will interact with are:
 
 If nothing else, `#datadog-alerts` and `#critical-bugs` are mandatory to turn on, as these are where we get notified of issues.
 
+You should have the Slack app installed on your phone, and *should* have notifications turned on for these channels. We cover mandatory Slack settings in the [Opsgenie & Slack](/oncall/opsgenie-slack) article.
+
 ### DataDog
 
 DataDog is the main tool we use for monitoring, and what we use to push alerts to Slack
@@ -63,4 +65,4 @@ OpsGenie is the main tool we use for on-call scheduling and escalation. It is wh
 
 OpsGenie is also where we acknowledge alerts, and where we can see the history of alerts.
 
-The first thing to ensure is that you have access to OpsGenie, your contact information is correct, and you have the OpsGenie app installed on your phone. This is covered in the [OpsGenie Onboarding](/oncall/opsgenie) article.
+The first thing to ensure is that you have access to OpsGenie, your contact information is correct, and you have the OpsGenie app installed on your phone. This is covered in the [Opsgenie & Slack](/oncall/opsgenie-slack) article.

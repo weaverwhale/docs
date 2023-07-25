@@ -40,7 +40,7 @@ We should still investigate, but it's not likely to be a critical issue unless c
 
 ### Container Restarts
 
-Sometimes containers restart for no reason; this is *likely* **not** a critical issue.
+Sometimes containers restart for no reason; this is *likely* **not** a critical issue
 
 Remember, we have ***Phoenix servers*** 🐦‍🔥
 
