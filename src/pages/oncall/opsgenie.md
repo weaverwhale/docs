@@ -47,4 +47,6 @@ We need to ack both within opsGenie and within slack, so it's important to have 
 
 ## Ensure you have notifications turned on for #datadog-alerts and #critical-bugs
 
-These are the two channels that we will be getting alerts in; you should have **ALL** notifications turned on for both.
+These are the two channels that we should *always* be investigating; you should have **ALL** notifications turned on for both.
+
+<img src="/datadog-alerts.png" /><br>

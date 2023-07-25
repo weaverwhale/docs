@@ -26,10 +26,13 @@ Slack is the main tool we use for communication; it is also the first place most
 
 The main channels you will interact with are:
 
-- #cloud-alerts
-- #datadog-alerts
-- #on-call
-- #on-call-knowledge-sharing
+- `#cloud-alerts`
+- `#datadog-alerts`
+- `#on-call`
+- `#on-call-knowledge-sharing`
+- `#critical-bugs`
+
+If nothing else, `#datadog-alerts` and `#critical-bugs` are mandatory to turn on, as these are where we get notified of issues.
 
 ### DataDog
 
