@@ -40,6 +40,6 @@ const { title, description, image = '/placeholder-social.jpg' } = Astro.props;
 <script>
 	// fix light/dark flash
 	window.localStorage.getItem('lightDark') === 'true' 
-		? document.documentElement.classList.add('dark') 
-		: document.documentElement.classList.remove('dark');
+		? document.querySelector('html')?.classList.add('dark') 
+		: document.querySelector('html')?.classList.remove('dark');
 </script>
