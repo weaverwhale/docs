@@ -38,8 +38,16 @@ const { title, description, image = '/placeholder-social.jpg' } = Astro.props;
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
 <script>
-	// fix light/dark flash
+	/*
+		fix light/dark flash
+		- add initial dark class
+		- add dcl class for transitions only after DCL
+	*/
+	const htmlEl = document.querySelector('html');
 	window.localStorage.getItem('lightDark') === 'true' 
-		? document.querySelector('html')?.classList.add('dark') 
-		: document.querySelector('html')?.classList.remove('dark');
+		? htmlEl?.classList.add('dark') 
+		: htmlEl?.classList.remove('dark');
+	document.addEventListener('DOMContentLoaded', () => {
+		htmlEl?.classList.add('dcl');
+	})
 </script>
