@@ -8,6 +8,7 @@ export const get = () =>
 		site: import.meta.env.SITE,
 		items: {
 			...import.meta.glob('./onboarding/**/*.{md,mdx}'), 
-			...import.meta.glob('./blog/**/*.{md,mdx}')
+			...import.meta.glob('./blog/**/*.{md,mdx}'),
+			...import.meta.glob('./oncall/**/*.{md,mdx}')
 		},
 	});
