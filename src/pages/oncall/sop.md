@@ -47,6 +47,9 @@ flowchart TB
     1. View **Runtime Logs** and do the same
         1. Top left of APM has links to GCP runtime logs
         1. The dashboard will show an error graph for the given time period
+1. Look in the `#datadog-alerts` channel for similar issues
+    1. Searching for the error or endpoint *should* yield some results
+    1. You may be able to glean a solution (if they exist, and the fix was documented)
 1. Look at the latest github commits
     1. See if some change aligns with the alert timeframe
     1. Look for anomalies or correlations from datadog
