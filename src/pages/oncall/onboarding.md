@@ -55,8 +55,15 @@ We can view different time periods to find anomalies or correlations within a se
 
 A couple good places to start are: 
 
+- [Dashboard](https://us5.datadoghq.com/dashboard/lists)
+  - We have a dashboard created for every TW service
+  - Each dashboard has links to the APM and GCP Runtime Logs for that service
 - [APM dashboard](https://us5.datadoghq.com/apm/home?env=shofifi)
+  - APM = Application Performance Monitoring
+  - Each service has its own APM dashboard
 - [Logs dashboard](https://us5.datadoghq.com/logs?env=shofifi)
+  - Datadog logs are from the frontend
+  - Errors/logs within the APM dashboard are from the backend
 
 ### GCP Console
 

@@ -37,15 +37,23 @@ flowchart TB
     1. Is it throwing errors?
     1. Are there missing pieces of functionality?
 1. Look at the Datadog dashboard
-    1. View the APM Dashboard for related services
-    1. Compare the **dynamic range** to the last 5-15 min, 1-4 hours, 1-3 days
+    1. View the **Dashboard** for the affected service(s)
+        1. We have a dashboard for each service; [they can all be found here](https://us5.datadoghq.com/dashboard/lists)
+    1. View the **APM** for related services
+        1. [APM for TW Gateway](https://us5.datadoghq.com/apm/services/tw-gateway/operations/express.request/resources?env=shofifi&fullscreen_end_ts=1690396913450&fullscreen_paused=false&fullscreen_start_ts=1690393313450&resources=qson%3A%28data%3A%28visible%3A%21t%2Chits%3A%28selected%3Atotal%29%2Cerrors%3A%28selected%3Atotal%29%2Clatency%3A%28selected%3Aavg%29%2CtopN%3Aall%29%2Cversion%3A%210%29&summary=qson%3A%28data%3A%28visible%3A%21t%2Cerrors%3A%28selected%3Aratio%29%2Chits%3A%28selected%3Arate%29%2Clatency%3A%28selected%3Alatency%2Cslot%3A%28agg%3A99%29%2Cdistribution%3A%28isLogScale%3A%21f%29%29%2Csublayer%3A%28slot%3A%28layers%3Aservice%29%2Cselected%3Apercentage%29%29%2Cversion%3A%211%29&topGraphs=latency%3Alatency%2Chits%3Aversion_count%2Cerrors%3Aversion_count%2CbreakdownAs%3Apercentage&start=1690393313450&end=1690396913450&paused=false)
+        1. [APM for affected service(s)](https://us5.datadoghq.com/apm/home?env=shofifi)
+    1. Compare the [**dynamic range**](https://en.wikipedia.org/wiki/Dynamic_range) to the last 5-15 min, 1-4 hours, 1-3 days
+        1. This should give us an idea of "normal" behavior vs what we are getting notified about
     1. View **Runtime Logs** and do the same
-        1. Runtime logs can provide links to GCP as well
+        1. Top left of APM has links to GCP runtime logs
+        1. The dashboard will show an error graph for the given time period
 1. Look at the latest github commits
     1. See if some change aligns with the alert timeframe
     1. Look for anomalies or correlations from datadog
 
-As a general rule, if the app is working, it's not a critical issue. If not, it is.
+After looking at the app, the dashboard, and the logs, you should have a good idea of what the issue is, and how to proceed.
+
+**NOTE:** As a general rule, if the app is working, it's not a critical issue. If not, it is.
 
 ### Communicate updates
 
