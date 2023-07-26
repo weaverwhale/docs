@@ -31,12 +31,12 @@ flowchart TB
 
 ### Investigate the issue
 
-1. Look at the app
+1. Look at the Triple Whale app
     1. Is it down?
     1. Is it slow?
     1. Is it throwing errors?
     1. Are there missing pieces of functionality?
-1. Look at the Datadog dashboard
+1. Look in Datadog
     1. View the **Dashboard** for the affected service(s)
         1. We have a dashboard for each service; [they can all be found here](https://us5.datadoghq.com/dashboard/lists)
     1. View the **APM** for related services
@@ -47,9 +47,13 @@ flowchart TB
     1. View **Runtime Logs** and do the same
         1. Top left of APM has links to GCP runtime logs
         1. The dashboard will show an error graph for the given time period
-1. Look in the `#datadog-alerts` channel for similar issues
-    1. Searching for the error or endpoint *should* yield some results
-    1. You may be able to glean a solution (if they exist, and the fix was documented)
+1. Look in Slack
+    1. Search the `#datadog-alerts` channel for similar issues
+        1. Searching for the error or endpoint *should* yield some results from the past
+        1. You may be able to glean a solution (if they exist, and the fix was documented)
+    1. Search the `#cloud-alerts` channel for correlated errors
+        1. Could correlate to a datadog alert through pubsub/endpoint call in another service
+        1. Could be the root cause of a datadog alert
 1. Look at the latest github commits
     1. See if some change aligns with the alert timeframe
     1. Look for anomalies or correlations from datadog
