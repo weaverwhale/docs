@@ -14,6 +14,8 @@ Features:
 - ✅ Sitemap support
 - ✅ RSS Feed support
 - ✅ Markdown & MDX support
+- ✅ Mermaid support
+
 
 ## 🚀 Project Structure
 
@@ -52,4 +54,4 @@ All commands are run from the root of the project, from a terminal:
 
 ## 👀 Want to learn more?
 
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Check out [Astro's documentation](https://docs.astro.build) for more information!

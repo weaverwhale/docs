@@ -3,8 +3,6 @@ import addClasses from './add-classes.mjs';
 import { remarkReadingTime } from './remark-reading-time.mjs';
 import { remarkDiagram } from './remark-diagram.mjs';
 import sitemap from '@astrojs/sitemap';
-
-// https://astro.build/config
 import vue from "@astrojs/vue";
 
 // https://astro.build/config
