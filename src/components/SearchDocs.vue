@@ -39,14 +39,7 @@ export default {
 	computed: {
 		filteredPosts() {
 			return this.posts.filter((post) => {
-				let frontmatterHas = Object.keys(post.frontmatter).filter((key) => {
-					return true
-					return post.frontmatter[key].toString().toLowerCase().includes(this.search.toLowerCase())
-				}).length > 0
-				
-				let contentHas = post.content.toString().toLowerCase().includes(this.search.toLowerCase())
-
-				return frontmatterHas || contentHas
+				return this.matchingAreas(post).length > 0
 			})
 		},
 
@@ -64,7 +57,7 @@ export default {
 			
 			let contentHas = post.content.toString().toLowerCase().includes(this.search.toLowerCase())
 
-			return [...matchingContent, contentHas ? 'content' : '']
+			return [...matchingContent, contentHas && 'content'].filter(Boolean)
 		}
 	}
 }
