@@ -31,7 +31,7 @@ flowchart TB
 
 ### Investigate the issue
 
-1. Look at the Triple Whale app
+1. Look at our App
     1. Is it down?
     1. Is it slow?
     1. Is it throwing errors?
@@ -54,11 +54,11 @@ flowchart TB
     1. Search the `#cloud-alerts` channel for correlated errors
         1. Could correlate to a datadog alert through pubsub/endpoint call in another service
         1. Could be the root cause of a datadog alert
-1. Look at the latest github commits
+1. Look at the latest Github commits
     1. See if some change aligns with the alert timeframe
     1. Look for anomalies or correlations from datadog
 
-After looking at the app, the dashboard, and the logs, you should have a good idea of what the issue is, and how to proceed.
+After looking at the app, dashboards, messages and logs, you should have a good idea of what the issue is, and how to proceed.
 
 **NOTE:** As a general rule, if the app is working, it's not a critical issue. If not, it is.
 
