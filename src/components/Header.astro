@@ -159,6 +159,7 @@ const links = [
 </style>
 
 <script>
+	// hamburger menu
 	const nav = document.querySelector('nav');
 	const open = document.getElementById('mobileNavOpen');
 	const close = document.getElementById('mobileNavClose');
@@ -177,4 +178,13 @@ const links = [
 			});
 		})
 	}
+</script>
+
+<script>
+	// open external links in new tab
+	const articleLinks = document.querySelectorAll('article a:not(.toc-link)');
+	articleLinks.forEach(link => {
+		// @ts-ignore	
+		link.target = "_blank";
+	})
 </script>
