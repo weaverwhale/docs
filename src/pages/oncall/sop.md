@@ -47,6 +47,7 @@ flowchart TB
     1. View **Runtime Logs** and do the same
         1. Top left of APM has links to GCP runtime logs
         1. The dashboard will show an error graph for the given time period
+        1. Errors within logs are usually indicative of a problem, especially if there isn't a history in the past
 1. Look in Slack
     1. Search the `#datadog-alerts` channel for similar issues
         1. Searching for the error or endpoint *should* yield some results from the past
