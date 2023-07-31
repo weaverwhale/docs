@@ -10,12 +10,14 @@ flowchart TB
     A[Recieve alert] --> B[Acknowledge the<br> issue]
     B --> C[Assess the issue]
         C -- Look at App, Dashboards, Logs, Commits --> C
-        C -- Easily Fixable --> E[Resolve the issue]
-        C -- Not Critical --> G[Alert Maintainer]
-        C -- Critical --> F[Call Chezi/Liad]
-        C -- False alarm --> I[Close the loop]
+        C -- Easily Fixable - P4/P5 --> E[Resolve the issue]
+        C -- Not Critical - P3/P2 --> G[Alert Maintainer]
+        C -- Critical - P1 --> F[Call Chezi/Liad]
+        C -- False alarm - P5 --> I[P5 - Close the loop]
     G --> H[Investigate the issue]
     F --> H
+    H --> J[Create a JIRA ticket]
+    J --> E
     H --> E
     E --> I[Close the loop]
 ```
@@ -24,8 +26,14 @@ flowchart TB
 
 1. `ack` within opsgenie
 1. Add the `:ack:` emoji to the slack thread (acknowledged)
+1. Start a thread on the issue if relevant, like `"Looking into it..."` (communication for this issue will happen in this thread)
 1. add the priority `:p1:` … `:p5:`
-1. Start a thread on the issue, like `"Looking into it..."` (communication for this issue will happen in this thread)
+    - `P5` - false alarm or known bug
+    - `P4` - not critical, but should be investigated and fixed at some point
+    - `P3` - unsure, should investigate and notify maintainer for follow up
+    - `P2` - critical, should investigate and notify maintainer immediately
+    - `P1` - most critical, notify up the chain until someone responds above yourself
+1, If an issue, declare an incident within Datadog
 
 ## Step 2: Asses the issue
 
@@ -72,7 +80,19 @@ After looking at the app, dashboards, messages and logs, you should have a good 
 
 In the slack alert, datadog will list the official maintainers for the piece of code that was written, and the last person to deploy the service. 
 
+### Alert maintainer
+
 If you’re unsure of the next step, contact these people to see if they have ideas about what might be wrong.
+
+### Declare an incident
+
+In datadog, you can declare an incident once you visit the link associated with the alert. 
+
+This will send a message to Opsgenie, and notify the proper channels according to our oncall rules.
+
+Feel free to continue communicating within the slack thread, but this will help notify the proper people.
+
+### Contact Chezi/Liad
 
 If you’re still unsure, or have run out of options, contact Chezi.
 
@@ -86,10 +106,16 @@ If you feel you can contribute to the fixing of the bug in any meaningful way, p
 
 PRs are always welcome, and if you’re unsure about the fix, feel free to ask for help!
 
+### Optional: 🦖 Creating a JIRA ticket
+
+If a lower priority issue is found, and you don't have tge time or knowledge to fix it, create a JIRA ticket.
+
+This is imoprtant as things left in slack are quickly forgotten, and we want to make sure we don't lose track of the issue. JIRA is the way we do this 😎
+
 ## Closing the loop
 
-Once the issue is resolved, close loop within the slack thread.
+Once the issue is resolved, close loop within the slack thread, and/or in JIRA.
 
-Usually the fixer of the issue will close the issue, but if that ends up being you, please don't forget to do so!
+Usually the fixer of the issue will close the issue, but if that ends up being you, try to remember this last step!
 
 Ideally, you can provide a sentence-or-two summary of what happened, and what the fix was. Code is even better! This helps document the entire engagement for future on-callers.
