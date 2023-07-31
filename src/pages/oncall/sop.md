@@ -33,7 +33,7 @@ flowchart TB
     - `P3` - unsure, should investigate and notify maintainer for follow up
     - `P2` - critical, should investigate and notify maintainer immediately
     - `P1` - most critical, notify up the chain until someone responds above yourself
-1, If an issue, declare an incident within Datadog
+1. If an issue, declare an incident within Datadog
 
 ## Step 2: Asses the issue
 
