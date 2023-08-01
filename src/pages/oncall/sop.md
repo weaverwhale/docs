@@ -10,7 +10,7 @@ flowchart TB
     A[Recieve alert] --> B[Acknowledge the<br> issue]
     B --> C[Assess the issue]
         C -- Look at App, Dashboards, Logs, Commits --> C
-        C -- Easily Fixable - P4/P5 --> E[Resolve the issue]
+        C -- Fixable by On-call<br>or Bug - P4/P5 --> E[Resolve the issue]
         C -- Not Critical - P3/P2 --> G[Alert Maintainer]
         C -- Critical - P1 --> F[Call Chezi/Liad]
         C -- False alarm - P5 --> I[P5 - Close the loop]
