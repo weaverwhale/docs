@@ -106,11 +106,11 @@ If you feel you can contribute to the fixing of the bug in any meaningful way, p
 
 PRs are always welcome, and if you’re unsure about the fix, feel free to ask for help!
 
-### Optional: 🦖 Creating a JIRA ticket
+## 🦖 Creating a JIRA ticket
 
 If a lower priority issue is found, and you don't have tge time or knowledge to fix it, create a JIRA ticket.
 
-This is imoprtant as things left in slack are quickly forgotten, and we want to make sure we don't lose track of the issue. JIRA is the way we do this 😎
+This is imoprtant as things left in Slack are quickly forgotten, and we want to make sure we don't lose track of the issue. JIRA is the way we do this 😎
 
 ## Closing the loop
 
