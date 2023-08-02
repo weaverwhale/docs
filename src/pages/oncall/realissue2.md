@@ -9,29 +9,44 @@ pubDate: "Aug 1 2023"
 
 > "Triggered: <pixel> Spike in request errors on post_/pubsubtrekevent"
 
-> "Triggered: <pixel> Container restarts are high for pixel"
-
 <br>
 
-```mermaid
-```
+> "Triggered: <pixel> Container restarts are high for pixel"
 
 ## 📝 Summary
 
-This is a summary of the issue
+<img src="/p1.png" /><br>
 
 ## 📈 Impact
 
-This is the impact of the issue
+After a quick review of datadog and the app, it seems the service isn't down, but it was throwing errors and restarting containers. This initially tells us that the service is sick, and we need to investigate further.
+
+We ack the alert and start investigating. No priority yet.
 
 ## 📊 Metrics
 
-This is the metrics of the issue
+A quick search in Slack shows that this is a known issue, and actually related to a memory leak Chezki is working on - most likely related to uncaught errors or exceptions.
+
+It's not crucial, but we should investigate it. We can declare this a **`P4`** issue.
+
+<img src="/p2.png" /><br>
+
+After a while, Chezki confirms that this is indeed an "unhealthy pod", so we know our initial assumption was correct.
 
 ## 📝 Root Cause
 
-This is the root cause of the issue
+The pixel is throwing errors related to timing out; this means we have a sick pod (or pods) that are not responding to requests. This is causing a spike in errors and container restarts, confirmed by Chezki.
+
+<img src="/p3.png" /><br>
+
+
 
 ## 📝 Resolution
 
-This is the resolution of the issue
+Delete the pod and allow kubernetes to recreate it, effectively healing itself.
+
+<img src="/p4.png" /><br>
+
+Below, we can see the drastic drop in errors and restarts after the pod is deleted.
+
+<img src="/p5.png" /><br>

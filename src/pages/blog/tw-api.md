@@ -58,7 +58,9 @@ const [app, router] = getExpressApp({
 
 The next step is to expose the endpoint, and add firebase + hydra + auth0 validation to the endpoint.  
 
-To do this, it's actually super easy using the `apiConfig` middleware, directing the openApi configuration to leverage these three technologies:
+To do this, it's actually super easy using the `apiConfig` middleware. This is homegrown middleware we use to expose endpoints to the world (auto-generates configurations in `openapi.yml`). Thanks Chezki!
+
+We direct the openApi configuration to leverage our three technologies/requirements below:
 
 ```javascript
 import { apiConfig } from '@tw/utils/module/express';
