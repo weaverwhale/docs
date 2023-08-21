@@ -31,6 +31,16 @@ As the incident progresses, Datadog will update the Slack channel with the statu
 
 <img src="/incident2.png" /><br>
 
+## Severity determination
+
+<img src="/incident4.png" /><br>
+
+## Escalation path
+
+Depending on the severity of the incident, you may need to escalate the incident to the next level of support. This can should be based on your best judgement, and the severity of the incident.
+
+We cover this more in depth in the [Escalation](/oncall/escalate) page.
+
 ## Incident resolution
 
 Once the incident is resolved, you can resolve the incident in Datadog by clicking the "Resolve Incident" button. This will update the incident report in Datadog, and notify within Slack under `incident-<severity>` channel.
