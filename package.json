@@ -15,7 +15,7 @@
     "@astrojs/rss": "^1.2.1",
     "@astrojs/sitemap": "^1.0.0",
     "@astrojs/vue": "^1.2.2",
-    "astro": "^2.0.1",
+    "astro": "^3.0.12",
     "astro-diagram": "^0.7.0",
     "dedent": "^1.2.0",
     "globby": "^13.1.3",
