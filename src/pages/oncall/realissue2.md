@@ -37,13 +37,13 @@ After a while, Chezki confirms that this is indeed an "unhealthy pod", so we kno
 
 The pixel is throwing errors related to timing out; this means we have a sick pod (or pods) that are not responding to requests. This is causing a spike in errors and container restarts, confirmed by Chezki.
 
+NOTE: Sick **pods** can be deleted, not entire deployments.
+
 <img src="/p3.png" /><br>
-
-
 
 ## 📝 Resolution
 
-Delete the pod and allow kubernetes to recreate it, effectively healing itself.
+**Delete the sick pod** and allow kubernetes to recreate it, effectively healing itself.
 
 <img src="/p4.png" /><br>
 
