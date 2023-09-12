@@ -35,7 +35,7 @@ flowchart TB
     - `P1` - most critical, notify up the chain until someone responds above yourself
 1. If an issue, declare an incident within Datadog
 
-## Step 2: Asses the issue
+## Step 2: Assess the issue
 
 ### Investigate the issue
 
