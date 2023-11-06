@@ -29,7 +29,7 @@ const { prevDoc, nextDoc, endOfDocs, beginningOfDocs, docsIndex, docsName } = As
     ) : '<div></div>'}
     <a class="index" href={docsIndex}>{docsName} Index</a>
     {nextDoc ? (
-      <a class="next" href={nextDoc.url}>{endOfDocs ? 'Start Over:' : 'Next Up:'} {nextDoc.frontmatter.title} &rarr;</a>
+      <a class="next" href={nextDoc.url}>{endOfDocs ? 'Start Over: ' : 'Next Up: '}{nextDoc.frontmatter.title} &rarr;</a>
     ) : '<div></div>'}
   </div>
 ) : ''}
