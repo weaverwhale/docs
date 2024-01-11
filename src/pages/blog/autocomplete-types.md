@@ -2,7 +2,7 @@
 layout: "../../layouts/BlogPost.astro"
 title: "📠 Typescript Autocomplete"
 description: "Predefined list of strings with autocomplete in typescript"
-pubDate: "Aug 2 2023"
+pubDate: "Jan 11 2024"
 ---
 
 ## I want to create a string type with a predefined list from an array, but also allow it to accept something not from the list as well
