@@ -3,6 +3,7 @@ layout: "../../layouts/OnboardingPost.astro"
 title: "🥊 Quick Hitters"
 description: "Easy-access to the most commonly used commands and workflows on the \"big three\" repositories"
 pubDate: "Dec 21 2022"
+updatedDate: "Feb 13 2024"
 ---
 
 <br>
@@ -105,6 +106,14 @@ Select `shofifi` & `staging`
 **NOTE**: You will know this is finished when the `api-gateway` GCP service has successfully deployed, and are notified in the `staging-channels` slack channel with three rocket ships
 
 🚀🚀🚀
+
+### ⏪ Reverting a commit on a live service
+
+```bash
+tw revert <SERVICE>
+```
+
+This is especially useful for developers that do not have permission to push to master.
 
 <br>
 <br>
